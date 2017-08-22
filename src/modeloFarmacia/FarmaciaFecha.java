@@ -1,4 +1,4 @@
-package farmacia;
+package modeloFarmacia;
 
 import java.time.LocalDate;
 

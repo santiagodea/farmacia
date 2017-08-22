@@ -1,4 +1,4 @@
-package farmacia;
+package modeloFarmacia;
 
 public class ObraSocial {
 	private String nombre;
