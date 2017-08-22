@@ -30,5 +30,8 @@ public class Farmacia {
 	public void setObrasSociales(Collection<ObraSocial> obrasSociales) {this.obrasSociales = obrasSociales;}
 	
 	
+	public void agregarObraSocial(ObraSocial unaObra) {
+		this.getObrasSociales().add(unaObra);
+	}
 	
 }
