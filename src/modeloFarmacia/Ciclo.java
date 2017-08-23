@@ -23,10 +23,6 @@ public class Ciclo {
 		this.getFarmaciasEnCiclo().add(new FarmaciaFecha(fecha,farmacia));
 	}
 	
-	
-	
-	
-	
 	public boolean sePuedeAgregarFarmacia(Farmacia unaFarmacia) {
 		return (!this.coleccionDeFarmacias().contains(unaFarmacia));
 	}
