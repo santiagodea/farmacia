@@ -1,6 +1,6 @@
 package modeloFarmacia;
 
-public class InfoStandard {
+public abstract class InfoStandard {
 
 	private String name;
 	private String address;
@@ -54,5 +54,23 @@ public class InfoStandard {
 
 	public void setAlternativePhone(int alternativePhone) {
 		this.alternativePhone = alternativePhone;
+	}
+
+	public boolean equals(InfoStandard info) {
+		return this.getName().equals(info.getName());
+	} 
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(InfoStandard.class.isInstance(obj)){
+			InfoStandard temp = (InfoStandard) obj;
+			if(this.getName().equals(temp.getName())){
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}	
 	}
 }
