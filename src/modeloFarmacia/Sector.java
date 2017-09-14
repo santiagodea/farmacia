@@ -17,11 +17,15 @@ public class Sector {
 	
 //methods
 	
-	
-	public boolean canIaddCycle(Cycle cicle){
-		//TODO aca deberia verificar que no se solape con otro ciclo
-		return true;
+	//TODO verifica si se puede agregar un determinado ciclo.
+	//(no debe solaparse con ningun otro)
+	public boolean canIaddCycle(Cycle aCycle){
+		return this.getCycles().stream().anyMatch(cycle -> !cycle.sesolapa(aCycle));
 	}
+	
+	
+	
+	
 	
 //setter y getters
 	public String getName() {

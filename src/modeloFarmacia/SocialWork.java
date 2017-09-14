@@ -6,11 +6,4 @@ public class SocialWork extends InfoStandard{
 		super(name, address, landphone);
 	}
 
-
-	
-	
-	
-	//getters & setters
-
-	
 }

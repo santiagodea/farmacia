@@ -22,6 +22,25 @@ public abstract class InfoStandard {
 		this.setAlternativePhone(alternativePhone);
 	}
 
+// metodos
+	public boolean equals(InfoStandard info) {
+		return this.getName().equals(info.getName());
+	} 
+
+// se redefinio el equals para poder comparar por el nombre de la misma y no poder crear mas de una farmacia con el mismo nombre
+	@Override
+	public boolean equals(Object obj) {
+		if(InfoStandard.class.isInstance(obj)){
+			InfoStandard temp = (InfoStandard) obj;
+			if(this.getName().equals(temp.getName())){
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}	
+	}
 
 //getter y setters
 	public String getName() {
@@ -49,28 +68,10 @@ public abstract class InfoStandard {
 	}
 
 	public int getAlternativePhone() {
-		return alternativePhone;
+		return alternativePhone;		
 	}
 
 	public void setAlternativePhone(int alternativePhone) {
 		this.alternativePhone = alternativePhone;
-	}
-
-	public boolean equals(InfoStandard info) {
-		return this.getName().equals(info.getName());
-	} 
-	
-	@Override
-	public boolean equals(Object obj) {
-		if(InfoStandard.class.isInstance(obj)){
-			InfoStandard temp = (InfoStandard) obj;
-			if(this.getName().equals(temp.getName())){
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}	
 	}
 }

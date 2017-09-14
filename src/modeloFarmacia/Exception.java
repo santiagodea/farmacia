@@ -3,29 +3,29 @@ package modeloFarmacia;
 import java.time.LocalDate;
 
 public class Exception {
-	private LocalDate fecha; 
-	private Pharmacy farmacia;
+	private LocalDate date; 
+	private Pharmacy pharmacy;
 
 	//constructor
 	public Exception(LocalDate fecha, Pharmacy farmacia) {
-		this.setFarmacia(farmacia);
-		this.setFecha(fecha);
+		this.setPharmacy(farmacia);
+		this.setDate(fecha);
 	}
 		
 		
 	//getter & setters
-	public LocalDate getFecha() {
-		return fecha;
+	public LocalDate getDate() {
+		return date;
 	}
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
-	}
-	
-	public Pharmacy getFarmacia() {
-		return farmacia;
+	public void setDate(LocalDate fecha) {
+		this.date = fecha;
 	}
 	
-	public void setFarmacia(Pharmacy farmacia) {
-		this.farmacia = farmacia;
+	public Pharmacy getPharmacy() {
+		return pharmacy;
+	}
+	
+	public void setPharmacy(Pharmacy farmacia) {
+		this.pharmacy = farmacia;
 	}
 }

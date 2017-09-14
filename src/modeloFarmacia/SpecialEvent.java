@@ -1,15 +1,15 @@
 package modeloFarmacia;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class SpecialEvent {
 	private String name;
-	private LocalDateTime dateStart;
-	private LocalDateTime dateEnd;
+	private LocalDate dateStart;
+	private LocalDate dateEnd;
 	private String description;
 	
 	//constructor
-	public SpecialEvent(String name, LocalDateTime dateStart, LocalDateTime dateEnd, String description) {
+	public SpecialEvent(String name, LocalDate dateStart, LocalDate dateEnd, String description) {
 		this.setDateEnd(dateEnd);
 		this.setDateStart(dateStart);
 		this.setDescription(description);
@@ -26,16 +26,16 @@ public class SpecialEvent {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public LocalDateTime getDateStart() {
+	public LocalDate getDateStart() {
 		return dateStart;
 	}
-	public void setDateStart(LocalDateTime dateStart) {
+	public void setDateStart(LocalDate dateStart) {
 		this.dateStart = dateStart;
 	}
-	public LocalDateTime getDateEnd() {
+	public LocalDate getDateEnd() {
 		return dateEnd;
 	}
-	public void setDateEnd(LocalDateTime dateEnd) {
+	public void setDateEnd(LocalDate dateEnd) {
 		this.dateEnd = dateEnd;
 	}
 	public String getDescription() {
