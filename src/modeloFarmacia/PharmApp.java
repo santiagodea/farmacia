@@ -27,36 +27,40 @@ public class PharmApp {
 	}
 	
 	
-//getters y setters
-	public LocalDateTime getDate() {
-		// ESTO DEBE SER LocalDateTime.now();
-		return date;
-	}
 
 
-	public List<Sector> getSectorList() {
-		return sectorList;
-	}
 
-
-	public void setSectorList(List<Sector> sectorList) {
-		sectorList = sectorList;
-	}
-
-	//este no deberia existir solo para test
-	public void setDate(LocalDateTime date) {
-		this.date = date;
-	}
-
+	//
 	public Sector getSectorCall(String sectorName) {
 		return this.sectorList.stream().filter(s -> s.getName().equals(sectorName.toUpperCase())).findFirst().get();
 	}
-
-	public void addPharmacyToSector(Pharmacy farmacia, String string) {
-		this.getSectorCall(string).addPharmacy(farmacia);
+	//agrega una farmacia al secor
+	public void addPharmacyToSector(Pharmacy farmacia, String sectorName) {
+		this.getSectorCall(sectorName).addPharmacy(farmacia);
 	}
+	//valida si puede agregar una determinada farmacia al sector
 	public boolean canIaddPharmacy(Pharmacy farmacia){
 		return !this.getSectorList().stream().anyMatch(sector -> sector.existPharmacy(farmacia));
 	}
 	
+	
+//getters y setters
+	public LocalDateTime getDate() {
+			// ESTO DEBE SER LocalDateTime.now();
+			return date;
+	}
+
+
+	public List<Sector> getSectorList() {
+			return sectorList;
+	}
+
+
+	public void setSectorList(List<Sector> sectorList) {
+			sectorList = sectorList;
+	}
+//este no deberia existir solo para test
+	public void setDate(LocalDateTime date) {
+			this.date = date;
+	}	
 }
