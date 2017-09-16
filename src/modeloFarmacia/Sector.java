@@ -1,5 +1,6 @@
 package modeloFarmacia;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,26 +8,54 @@ public class Sector {
 	private String name;
 	private List<Pharmacy> pharmacyList = new ArrayList<>();
 	private List<Cycle> cycles = new ArrayList<>();
-
+	private LocalDate nextDayStartDate;
 	
 //constructor
-	public Sector (String name) {
+	public Sector (String name, LocalDate date) {
 		this.setName(name);
+		this.nextDayStartDate = date;
 	}
 	
 	
 //methods
+		
+	public boolean existPharmacy(Pharmacy farmacia) {
+		return this.getPharmacyList().contains(farmacia);
+	}
 	
-	//TODO verifica si se puede agregar un determinado ciclo.
-	//(no debe solaparse con ningun otro)
-	public boolean canIaddCycle(Cycle aCycle){
-		return this.getCycles().stream().anyMatch(cycle -> !cycle.sesolapa(aCycle));
+
+	public void createCycle(LocalDate cycleEndDate) {
+		this.getCycles().add(new Cycle(getNextDayStartDate().plusDays(1), cycleEndDate));
+		this.setNextDayStartDate(cycleEndDate);
+	}
+	
+	// agrega una farmacia al sector, si puede.
+	public void addPharmacy(Pharmacy pharmacy) {
+		if (this.candIaddSector(pharmacy)) {
+			this.getPharmacyList().add(pharmacy);
+		}
+		else {
+			 throw new RuntimeException("La farmacia " + pharmacy.getName() + " ya existe en el sector");
+		}
+	}
+
+	private boolean candIaddSector(Pharmacy pharmacy) {
+		// compara si la farmacia ya esta o no en la lista de farmacias en el sector
+		return !this.getPharmacyList().contains(pharmacy);
+	}
+
+	public Pharmacy getShiftPharmacy(LocalDate actualDate) {
+		Cycle findedCycle = this.findCycleWhithDate(actualDate);
+		return findedCycle.getShiftPharmacy(this.getPharmacyList(), actualDate);
 	}
 	
 	
 	
-	
-	
+	private Cycle findCycleWhithDate(LocalDate actualDate) {
+		return	this.getCycles().stream().filter(c -> c.includeDate(actualDate)).findAny().get();
+	}
+
+
 //setter y getters
 	public String getName() {
 		return name;
@@ -41,16 +70,6 @@ public class Sector {
 		this.pharmacyList = pharmacyList;
 	}
 
-	public void addPharmacy(Pharmacy farmacia) {
-		this.getPharmacyList().add(farmacia);
-	}
-
-
-	
-	public void addCycle(Cycle cicle) {
-		this.getCycles().add(cicle);
-	}
-
 	public List<Cycle> getCycles() {
 		return cycles;
 	}
@@ -59,10 +78,14 @@ public class Sector {
 		this.cycles = cycles;
 	}
 
-	public boolean existPharmacy(Pharmacy farmacia) {
-		return this.getPharmacyList().contains(farmacia);
+
+	public LocalDate getNextDayStartDate() {
+		return nextDayStartDate;
+	}
+
+	public void setNextDayStartDate(LocalDate nextDayStartDate) {
+		this.nextDayStartDate = nextDayStartDate;
 	}
 
 
-	
 }

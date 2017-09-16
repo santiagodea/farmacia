@@ -21,6 +21,9 @@ public class Pharmacy extends InfoStandard{
 		return (!this.getSocialWorks().contains(socialWork));
 	}
 	public void addSocialWork(SocialWork socialWork) {
-		this.getSocialWorks().add(socialWork);
+		if (this.canIAddSocialWork(socialWork)) {
+			this.getSocialWorks().add(socialWork);
+		}
+		else {throw new RuntimeException("la farmacia ya tiene la obra social " +  socialWork);}
 	}	
 }
