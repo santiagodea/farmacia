@@ -66,7 +66,7 @@ public class PharmApp {
 	}
 	
 	public void setSectorList(List<Sector> sectorList) {
-			sectorList = sectorList;
+			this.sectorList = sectorList;
 	}
 	
 //este no deberia existir solo para test

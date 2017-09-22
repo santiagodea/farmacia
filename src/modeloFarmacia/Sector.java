@@ -15,10 +15,11 @@ public class Sector {
 		this.setName(name);
 		this.nextDayStartDate = date;
 	}
-	
-	
+
 //methods
 		
+	
+
 	public boolean existPharmacy(Pharmacy farmacia) {
 		return this.getPharmacyList().contains(farmacia);
 	}

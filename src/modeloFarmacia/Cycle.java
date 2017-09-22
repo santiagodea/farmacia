@@ -1,9 +1,11 @@
 package modeloFarmacia;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 
 public class Cycle {
 	private Collection<Exception> exceptions = new ArrayList<>();
@@ -50,7 +52,6 @@ public class Cycle {
 	//se fija si pude agregar una excepcion al ciclo, tiene que estan en rango
 	public boolean canIAddException(Exception aException) {
 		return this.includeDate(aException.getDate());
-		
 	}
 		
 //	//valida si una excepcion estan entre la fecha de inicio y la de fin del ciclo.
@@ -61,15 +62,43 @@ public class Cycle {
 //	}
 
 	public boolean includeDate(LocalDate date) {
-		return (this.getDateStart().isBefore(date) ||this.getDateStart().isEqual(date))  && 
-		(this.getDateEnd().isAfter(date) ||this.getDateEnd().isAfter(date));
+		return  (this.getDateStart().isBefore(date) ||this.getDateStart().isEqual(date))  && 
+				(this.getDateEnd().isAfter(date) ||this.getDateEnd().isAfter(date));
 	}
 
 	
 	public Pharmacy getShiftPharmacy(List<Pharmacy> pharmacyList, LocalDate actualDate) {
-		//TODO que apartir de una lsita de farmacia nos de el dia actual
-		return null;
+		Pharmacy pharmacy;
+		if(this.existExceptionWithDate(actualDate)){
+			pharmacy = this.getExceptionDate(actualDate).getPharmacy();
+		} else {
+//			int days = Math.toIntExact(ChronoUnit.DAYS.between(this.dateStart, actualDate));
+			pharmacy = pharmacyList.get(this.getPharmacyIndex(pharmacyList, actualDate)); //days % pharmacyList.size());
+		}
+		return  pharmacy;
 	}
+	
+	private int getPharmacyIndex(List<Pharmacy> pharmacyList, LocalDate actualDate){
+		int days = Math.toIntExact(ChronoUnit.DAYS.between(this.dateStart, actualDate));
+		int index;
+		if (days == 0){
+			index = 0;
+		} else {
+			index = days % pharmacyList.size();
+		}
+		return index;
+	}
+
+	private Exception getExceptionDate(LocalDate actualDate) {
+		return this.getExceptions().stream().filter(e -> e.getDate().equals(actualDate)).findFirst().get();
+	}
+
+
+	private boolean existExceptionWithDate(LocalDate actualDate) {
+		return this.getExceptions().stream().anyMatch(e -> e.getDate().equals(actualDate));
+	}
+
+
 	//setters y getters
 	public Collection<Exception> getExceptions() {
 		return exceptions;

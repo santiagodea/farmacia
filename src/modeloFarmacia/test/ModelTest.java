@@ -15,7 +15,8 @@ import modeloFarmacia.SocialWork;
 
 public class ModelTest {
 
-	Sector norte = PharmApp.store().getSectorCall("norte");
+//	Sector norte = PharmApp.store().getSectorCall("norte");
+	Sector norte = new Sector("norte", LocalDate.of(2016, 12, 31));
 	
 //	//Ciclos - no usamos mas este tipo de creacion de ciclo se encarga Sector
 //	Cycle ciclo1NORTE = new Cycle(LocalDate.of(2017, 1, 1), LocalDate.of(2017, 6, 30));
@@ -34,6 +35,7 @@ public class ModelTest {
 	
 	@Before
 	public void init(){
+		
 		//Agrego las obras sociales a las farmacias
 		farmacia1.addSocialWork(obraS1);
 		farmacia1.addSocialWork(obraS2);
@@ -89,5 +91,40 @@ public class ModelTest {
 		System.out.println("Ciclo 2 inicio " + norte.getCycles().get(1).getDateStart() + " fin " + norte.getCycles().get(1).getDateEnd());
 		
 		assertEquals(norte.getCycles().size(), 2);
+	}
+	
+
+	@Test
+	public void testIncludeDate(){
+		Cycle c = new Cycle(LocalDate.of(2017,2, 10), LocalDate.of(2017,2, 15));
+		Cycle c1 = new Cycle(LocalDate.of(2017,2, 10), LocalDate.of(2017,5, 15));
+
+		assertTrue(c.includeDate(LocalDate.of(2017,2, 10)));
+		assertTrue(c.includeDate(LocalDate.of(2017,2, 13)));
+		assertTrue(c.includeDate(LocalDate.of(2017,2, 14)));
+		
+		assertTrue(c1.includeDate(LocalDate.of(2017,2, 10)));
+		assertTrue(c1.includeDate(LocalDate.of(2017,3, 13)));
+		assertTrue(c1.includeDate(LocalDate.of(2017,5, 14)));
+		
+	}
+	
+	@Test
+	public void testShiftPharmacy(){
+		Pharmacy s = new Pharmacy("Soloeta", "20 n210", 453131, 453132);
+		
+		norte.addPharmacy(farmacia1);
+		norte.addPharmacy(farmacia2);
+		norte.addPharmacy(s);
+		
+		norte.createCycle(LocalDate.of(2017, 1, 20));
+		
+		assertEquals(farmacia1, norte.getShiftPharmacy(LocalDate.of(2017, 1, 1)));
+		
+		assertEquals(s, norte.getShiftPharmacy(LocalDate.of(2017, 1, 3)));
+		assertEquals(s, norte.getShiftPharmacy(LocalDate.of(2017, 1, 6)));
+		
+		assertEquals(farmacia1, norte.getShiftPharmacy(LocalDate.of(2017, 1, 19)));
+		
 	}
 }
