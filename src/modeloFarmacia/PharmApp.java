@@ -1,23 +1,46 @@
 package modeloFarmacia;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PharmApp {
+public class PharmApp implements Serializable {
+	private static final long serialVersionUID = 4606942675221926577L;
+
 	private static PharmApp state;
 	
 	private List<Sector> sectorList = new ArrayList<>();
 	private List<SpecialEvent> SpecialEventList = new ArrayList<>();
 	
-	private LocalDateTime date; //para test FECHA ACTUAL falsa
+	private LocalDate date; //para test FECHA ACTUAL falsa
 	
 //constructor	
 	private PharmApp() {
 		//Sectores
-		sectorList.add(new Sector("NORTE",LocalDate.of(2016, 12, 31)));
-		sectorList.add(new Sector("SUR",LocalDate.of(2016, 12, 31)));
+		Sector norte = new Sector("NORTE",LocalDate.of(2016, 12, 31));
+
+		sectorList.add(norte);
+		//sectorList.add(new Sector("SUR",LocalDate.of(2016, 12, 31)));
+		
+		norte.createCycle(LocalDate.of(2017,12,31));
+		
+		//creo las farmacias
+		Pharmacy farmacia1 = new Pharmacy("De Cicco", "Guemes 399", 452222, 452223);
+		Pharmacy farmacia2 = new Pharmacy("Pasteur", "Calle 18 Nª300", 452254, 453333);
+
+		//creo las obras sociales
+		SocialWork obraS1 = new SocialWork("OSDE", "sarasa 1000", 456666);
+		SocialWork obraS2 = new SocialWork("IOMA", "sarasa 1100", 455555);
+
+		farmacia1.addSocialWork(obraS1);
+		farmacia1.addSocialWork(obraS2);
+		
+		farmacia2.addSocialWork(obraS1);
+		
+		norte.addPharmacy(farmacia1);
+		norte.addPharmacy(farmacia2);
+
 	}
 	
 	//Singleton
@@ -51,7 +74,7 @@ public class PharmApp {
 	
 	
 //getters y setters
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 			// ESTO DEBE SER LocalDate.now();
 			return date;
 	}
@@ -70,7 +93,7 @@ public class PharmApp {
 	}
 	
 //este no deberia existir solo para test
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 			this.date = date;
 	}
 

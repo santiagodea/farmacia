@@ -1,8 +1,10 @@
 package modeloFarmacia;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class SpecialEvent {
+public class SpecialEvent implements Serializable{
+	private static final long serialVersionUID = 7429464403569611411L;
 	private String name;
 	private LocalDate dateStart;
 	private LocalDate dateEnd;

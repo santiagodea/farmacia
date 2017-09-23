@@ -1,9 +1,2 @@
-<<<<<<< HEAD
 Manifest-Version: 1.0
 Class-Path: 
-
-=======
-Manifest-Version: 1.0
-Class-Path: 
-
->>>>>>> branch 'master' of https://github.com/santiagodea/farmacia.git

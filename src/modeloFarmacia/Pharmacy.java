@@ -1,9 +1,11 @@
 package modeloFarmacia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Pharmacy extends InfoStandard{
+public class Pharmacy extends InfoStandard implements Serializable{
+	private static final long serialVersionUID = 3875238602213251423L;
 	private Collection<SocialWork> socialWorks = new ArrayList<>();
 
 	//constructor

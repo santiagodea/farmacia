@@ -1,10 +1,14 @@
 package modeloFarmacia;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class Sector {
+
+public class Sector implements Serializable {
+	private static final long serialVersionUID = -8543750070106542971L;
 	private String name;
 	private List<Pharmacy> pharmacyList = new ArrayList<>();
 	private List<Cycle> cycles = new ArrayList<>();
@@ -53,7 +57,11 @@ public class Sector {
 	
 	
 	private Cycle findCycleWhithDate(LocalDate actualDate) {
-		return	this.getCycles().stream().filter(c -> c.includeDate(actualDate)).findAny().get();
+		Optional<Cycle> posibleCycle = this.getCycles().stream().filter(c -> c.includeDate(actualDate)).findAny();
+		if(!posibleCycle.isPresent()){
+			throw new RuntimeException("Esta fecha no esta cubierta");
+		}
+		return	posibleCycle.get();
 	}
 
 

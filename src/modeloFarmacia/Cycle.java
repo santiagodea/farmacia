@@ -1,5 +1,6 @@
 package modeloFarmacia;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -7,7 +8,8 @@ import java.util.Collection;
 import java.util.List;
 
 
-public class Cycle {
+public class Cycle implements Serializable {
+	private static final long serialVersionUID = 3718085655203446371L;
 	private Collection<Exception> exceptions = new ArrayList<>();
 	private LocalDate dateStart; // automaticamente al crearlo se asigna la fecha siguiente al ultimo siglo vigente.
 	private LocalDate dateEnd;
@@ -72,8 +74,7 @@ public class Cycle {
 		if(this.existExceptionWithDate(actualDate)){
 			pharmacy = this.getExceptionDate(actualDate).getPharmacy();
 		} else {
-//			int days = Math.toIntExact(ChronoUnit.DAYS.between(this.dateStart, actualDate));
-			pharmacy = pharmacyList.get(this.getPharmacyIndex(pharmacyList, actualDate)); //days % pharmacyList.size());
+			pharmacy = pharmacyList.get(this.getPharmacyIndex(pharmacyList, actualDate));
 		}
 		return  pharmacy;
 	}
