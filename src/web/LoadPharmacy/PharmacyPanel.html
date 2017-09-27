@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Esto no se deberia ver</title>
+</head>
+<body>
+	<p>Esta parte no se incluye, porque está afuera del tag wicket:panel</p>
+	
+	<wicket:panel>
+		<div class="col-sm-18">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+				  		<div class="col-sm-6" style="font-weight: bold">
+							Nombre
+						</div>
+						<div class="col-sm-4">
+							<div wicket:id="name"></div>
+						</div>
+					</div><!-- /.row -->
+					<div class="row">
+				  		<div class="col-sm-6" style="font-weight: bold">
+							Direccion
+						</div>
+						<div class="col-sm-6">
+							<div wicket:id="address"></div>
+						</div>
+					</div><!-- /.row -->
+					<div class="row">
+				  		<div class="col-sm-6" style="font-weight: bold">
+							Telefono Fijo
+						</div>
+						<div class="col-sm-4">
+							<div wicket:id="landphone"></div>
+						</div>
+					</div><!-- /.row -->
+					<div class="row">
+				  		<div class="col-sm-6" style="font-weight: bold">
+							Telefono Alternativo
+						</div>
+						<div class="col-sm-4">
+							<div wicket:id="alternativePhone"></div>
+						</div>
+					</div><!-- /.row -->
+				</div>
+			</div>   <!--  /panel  -->
+		</div>   <!--  /col-sm-8  -->
+	</wicket:panel>
+</body>
+</html>

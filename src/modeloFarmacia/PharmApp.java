@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PharmApp implements Serializable {
 	private static final long serialVersionUID = 4606942675221926577L;
@@ -26,20 +27,31 @@ public class PharmApp implements Serializable {
 		norte.createCycle(LocalDate.of(2017,12,31));
 		
 		//creo las farmacias
-		Pharmacy farmacia1 = new Pharmacy("De Cicco", "Guemes 399", 452222, 452223);
-		Pharmacy farmacia2 = new Pharmacy("Pasteur", "Calle 18 Nª300", 452254, 453333);
+		Pharmacy belgrano = new Pharmacy("Belgrano", "Rivadavia y Av. San Martin", 454064, 450000);
+		Pharmacy callegari = new Pharmacy("Callegari", "De La Fuente y Paso", 452861, 450000);
+		Pharmacy decicco = new Pharmacy("De Cicco", "Gumes y Soloeta", 453064, 450000);
+		Pharmacy dimatteo = new Pharmacy("Di Matteo", "Dr. Torras y Moreno", 452088, 450000);
+		Pharmacy garcia = new Pharmacy("Garcia", "Dr Ortiz Nro 34", 454263, 453333);
 
+		
+		
+		
+		
+		
 		//creo las obras sociales
 		SocialWork obraS1 = new SocialWork("OSDE", "sarasa 1000", 456666);
 		SocialWork obraS2 = new SocialWork("IOMA", "sarasa 1100", 455555);
 
-		farmacia1.addSocialWork(obraS1);
-		farmacia1.addSocialWork(obraS2);
+		belgrano.addSocialWork(obraS1);
+		belgrano.addSocialWork(obraS2);
 		
-		farmacia2.addSocialWork(obraS1);
+		callegari.addSocialWork(obraS1);
 		
-		norte.addPharmacy(farmacia1);
-		norte.addPharmacy(farmacia2);
+		norte.addPharmacy(belgrano);
+		norte.addPharmacy(callegari);
+		norte.addPharmacy(decicco);
+		norte.addPharmacy(dimatteo);
+		norte.addPharmacy(garcia);
 
 	}
 	
@@ -55,10 +67,9 @@ public class PharmApp implements Serializable {
 	public Sector getSectorCall(String sectorName) {
 		return this.sectorList.stream().filter(s -> s.getName().equals(sectorName.toUpperCase())).findFirst().get();
 	}
+	
 	//agrega una farmacia al secor
 	public void addPharmacyToSector(Pharmacy farmacia, String sectorName) {
-		
-		
 		if(this.canIaddPharmacy(farmacia)) {	
 			this.getSectorCall(sectorName).addPharmacy(farmacia);
 		}
@@ -70,6 +81,10 @@ public class PharmApp implements Serializable {
 	//valida si puede agregar una determinada farmacia al sector
 	public boolean canIaddPharmacy(Pharmacy farmacia){
 		return this.getSectorList().stream().anyMatch(sector -> !sector.existPharmacy(farmacia));
+	}
+	
+	public List<Pharmacy> pharmacyList(){
+		return this.getSectorList().stream().map(s -> s.getPharmacyList()).flatMap(l -> l.stream()).collect(Collectors.toList());
 	}
 	
 	
