@@ -1,44 +1,72 @@
 <!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-	crossorigin="anonymous">
-<meta charset="UTF-8">
-<title>Farmacias de TURNO</title>
-</head>
-<body>
-	<div class="container justify-content-center">
-		<div class="row align-items-center">
-			<div class="col-sm-2">
-				<button wicket:id="backDate" class="btn btn-secondary">Fecha
-					anterior</button>
-			</div>
-			<div class="col-sm-8 text-center">
-				<span wicket:id="date"> dia/mes/anio </span>
-				<h3>Farmacias de turno</h3>
-<!-- 				<article wicket:id="listFarDate"> -->
-<!-- 					<span><span wicket:id="pharmacy">farmacia</span></span> -->
-<!-- 				</article> -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-				<table>
-					<thead>
-						<tr>Farmacia</tr>
-					</thead>
-					<tbody>
-						<tr wicket:id="listFarDate">
-							<td><span wicket:id="pharmacy"></span></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="col-sm-2">
-				<button wicket:id="nextDate" class="btn btn-secondary">Siguiente
-					fecha</button>
-			</div>
-		</div>
-	</div>
+    <title>Farmacias de turno</title>
 
-</body>
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/docs/4.0/examples/cover/cover.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Farmacias General Belgrano</h3>
+              <nav class="nav nav-masthead">
+                <a class="nav-link active" href="#">Principal</a>
+                <a class="nav-link" href="#">Agregar Farmacia</a>
+                <a class="nav-link" href="#">Manejo de ciclo</a>
+                <a class="nav-link" href="#">Obras Sociales</a>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading" wicket:id="date">Fecha</h1>
+            <div wicket:id="listFarDate">
+            <p class="lead" wicket:id="pharmacy">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+            </div>
+            <p class="lead">
+              <a href="#" wicket:id="nextDate" class="btn btn-lg btn-secondary">Siguiente Fecha</a>
+              <a href="#" wicket:id="backDate" class="btn btn-lg btn-secondary">Fecha Anterior</a>
+            </p>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Cover template for <a href="https://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+<!--     Bootstrap core JavaScript
+<!--     ================================================== --> -->
+<!--     Placed at the end of the document so the pages load faster -->
+<!--     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!--     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script> -->
+<!--     <script src="../../../../assets/js/vendor/popper.min.js"></script> -->
+<!--     <script src="../../../../dist/js/bootstrap.min.js"></script> -->
+<!--     IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--     <script src="../../../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+  </body>
 </html>

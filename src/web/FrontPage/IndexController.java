@@ -26,5 +26,4 @@ public class IndexController implements Serializable {
 				.collect(Collectors.toList());
 	}
 	
-	
 }

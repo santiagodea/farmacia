@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+	crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>Farmacias de TURNO</title>
+</head>
+<body>
+	<div class="container justify-content-center">
+		<div class="row align-items-center">
+			<div class="col-sm-2">
+				<button wicket:id="backDate" class="btn btn-secondary">Fecha
+					anterior</button>
+			</div>
+			<div class="col-sm-8 text-center">
+				<span wicket:id="date"> dia/mes/anio </span>
+				<h3>Farmacias de turno</h3>
+<!-- 				<article wicket:id="listFarDate"> -->
+<!-- 					<span><span wicket:id="pharmacy">farmacia</span></span> -->
+<!-- 				</article> -->
+
+				<table>
+					<thead>
+						<tr>Farmacia</tr>
+					</thead>
+					<tbody>
+						<tr wicket:id="listFarDate">
+							<td><span wicket:id="pharmacy"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-sm-2">
+				<button wicket:id="nextDate" class="btn btn-secondary">Siguiente
+					fecha</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
