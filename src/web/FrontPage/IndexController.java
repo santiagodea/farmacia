@@ -11,13 +11,14 @@ import modeloFarmacia.Pharmacy;
 public class IndexController implements Serializable {
 	private static final long serialVersionUID = -2981381443054915529L;
 	private PharmApp app = PharmApp.store();
+	private long offset = 0L;
 	
 	public IndexController(){
-		PharmApp.store().setDate(LocalDate.of(2017, 3, 15));
+		PharmApp.store().setDate(LocalDate.of(2017, 3, 15)); //para test
 	}
 	
 	public LocalDate getDate(){
-		return this.app.getDate();
+		return this.app.getDate().plusDays(this.offset);
 	}
 	
 	public List<Pharmacy> getListPharmacy(){
@@ -25,5 +26,11 @@ public class IndexController implements Serializable {
 				.map(s -> s.getShiftPharmacy(this.getDate()))
 				.collect(Collectors.toList());
 	}
-	
+
+	public void minusDay() {
+		this.offset-=1;
+	}
+	public void plusDay() {
+		this.offset+=1;
+	}
 }

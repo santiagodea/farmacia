@@ -25,6 +25,15 @@ public class Index extends WebPage {
 		this.fillLinks();
 		this.fillPharmacyShifts();
 	}
+	
+	public Index(IndexController controller){
+		super();
+		this.controller = controller;
+		this.fillLinks();
+		this.fillPharmacyShifts();
+	}
+	
+	
 
 	private void fillLinks() {
 		Link<String> backLink = new Link<String>("backDate") {
@@ -32,7 +41,8 @@ public class Index extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(Index.class);
+				Index.this.controller.minusDay();
+				this.setResponsePage(Index.this);
 			}
 		};
 		
@@ -41,7 +51,8 @@ public class Index extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(Index.class);
+				Index.this.controller.plusDay();
+				this.setResponsePage(Index.this);
 			}
 		};
 		
