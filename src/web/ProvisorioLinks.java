@@ -4,6 +4,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
 
 import web.FrontPage.Index;
+import web.LoadCycle.mainAdmin.MainAdmin;
 import web.LoadPharmacy.PagePharmacy;
 
 public class ProvisorioLinks extends WebPage{
@@ -27,6 +28,15 @@ public class ProvisorioLinks extends WebPage{
 			@Override
 			public void onClick() {
 				this.setResponsePage(PagePharmacy.class);
+			}
+		});
+		
+		this.add(new Link<String>("pageMainAdmin") {
+			private static final long serialVersionUID = -3690151360490159036L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(MainAdmin.class);
 			}
 		});
 		
