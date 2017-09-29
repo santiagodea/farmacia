@@ -14,6 +14,8 @@ public class PharmApp implements Serializable {
 	private List<Sector> sectorList = new ArrayList<>();
 	private List<SpecialEvent> SpecialEventList = new ArrayList<>();
 	
+	private List<SocialWork> socialWorks = new ArrayList<>();
+	
 	private LocalDate date; //para test FECHA ACTUAL falsa
 	
 //constructor	
@@ -22,7 +24,7 @@ public class PharmApp implements Serializable {
 		Sector norte = new Sector("NORTE",LocalDate.of(2016, 12, 31));
 
 		sectorList.add(norte);
-		//sectorList.add(new Sector("SUR",LocalDate.of(2016, 12, 31)));
+		sectorList.add(new Sector("SUR",LocalDate.of(2016, 12, 31)));
 		
 		norte.createCycle(LocalDate.of(2017,12,31));
 		
@@ -41,6 +43,10 @@ public class PharmApp implements Serializable {
 		//creo las obras sociales
 		SocialWork obraS1 = new SocialWork("OSDE", "sarasa 1000", 456666);
 		SocialWork obraS2 = new SocialWork("IOMA", "sarasa 1100", 455555);
+		
+		this.getSocialWorks().add(obraS1);
+		this.getSocialWorks().add(obraS2);
+
 
 		belgrano.addSocialWork(obraS1);
 		belgrano.addSocialWork(obraS2);
@@ -118,5 +124,13 @@ public class PharmApp implements Serializable {
 
 	public void setSpecialEventList(List<SpecialEvent> specialEventList) {
 		SpecialEventList = specialEventList;
+	}
+
+	public List<SocialWork> getSocialWorks() {
+		return socialWorks;
+	}
+
+	public void setSocialWorks(List<SocialWork> socialWorks) {
+		this.socialWorks = socialWorks;
 	}	
 }

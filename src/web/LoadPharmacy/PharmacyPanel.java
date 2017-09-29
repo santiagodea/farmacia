@@ -1,6 +1,8 @@
 package web.LoadPharmacy;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.PropertyModel;
 
@@ -19,6 +21,16 @@ public class PharmacyPanel  extends Panel{
 		this.add(new Label("landphone", new PropertyModel<>(this.controller, "chosenPharmacy.landphone")));
 		this.add(new Label("alternativePhone", new PropertyModel<>(this.controller, "chosenPharmacy.alternativePhone")));
 		
+		//NO ANDA - TENGO QUE MOSTRAR ALGO ASI: "OSDE,IOMA, GALENO".
+//		this.add(new ListView<String>("socialWorks", new PropertyModel<>(this.controller,"socialWorksListName" )) {
+//			private static final long serialVersionUID = 1L;
+//
+//			@Override
+//			protected void populateItem(ListItem<String> item) {
+//				item.add(new Label("socialWorks", new PropertyModel<>(item.getModelObject(), "socialWorksListName")));
+//				
+//			}
+//		}); 
 	}
 
 

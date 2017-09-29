@@ -2,6 +2,7 @@ package web.LoadPharmacy;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import modeloFarmacia.PharmApp;
 import modeloFarmacia.Pharmacy;
@@ -45,6 +46,12 @@ public class ControllerPharmacy implements Serializable{
 	public List<Pharmacy> getAlbumsToShow() {
 		return this.getApp().pharmacyList();
 	}
+	
+	public List<String> socialWorksListName(){
+		return this.getPharmacy().getSocialWorks().stream().map(s -> s.getAddress()).collect(Collectors.toList());
+		
+	}
+	
 	
 	
 }

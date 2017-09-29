@@ -51,6 +51,7 @@ public class ModelTest {
 		
 		assertTrue(farmacia1.equals(farmacia3));
 		
+		//assertEquals("suer",PharmApp.store().getSectorList().get(0).getName());		
 	}
 	
 	@Test (expected = RuntimeException.class)
