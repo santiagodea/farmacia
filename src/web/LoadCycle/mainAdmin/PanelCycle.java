@@ -34,17 +34,17 @@ public class PanelCycle extends Panel {
 				panel.add(new Label("since", comp.bind("dateStart")));
 				panel.add(new Label("until", comp.bind("dateEnd")));
 				
-				//TODO boton para editar
+				//TODO boton para editar??? en el ultimo
 			}
 		};
 		this.add(listV);
 	}
 
 
-//	@Override
-//	public boolean isVisible() {
-//		return super.isVisible() && this.getController().hasSectorSelected();
-//	}
+	@Override
+	public boolean isVisible() {
+		return super.isVisible() && this.getController().hasSectorSelected();
+	}
 
 //Setters y Getters
 	public ControllerMainAdmin getController() {
