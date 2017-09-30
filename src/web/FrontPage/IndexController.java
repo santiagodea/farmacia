@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import modeloFarmacia.PharmApp;
 import modeloFarmacia.Pharmacy;
+import modeloFarmacia.SpecialEvent;
 
 public class IndexController implements Serializable {
 	private static final long serialVersionUID = -2981381443054915529L;
@@ -27,6 +28,14 @@ public class IndexController implements Serializable {
 				.collect(Collectors.toList());
 	}
 
+	public List<SpecialEvent> getSpecialEventsDate(){
+		return PharmApp.store().getSpecialEventListTo(this.getDate());
+	}
+	
+	public boolean getIsToday(){
+		return this.offset == 0;
+	}
+	
 	public void minusDay() {
 		this.offset-=1;
 	}

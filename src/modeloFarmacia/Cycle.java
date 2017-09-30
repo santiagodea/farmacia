@@ -65,7 +65,7 @@ public class Cycle implements Serializable {
 
 	public boolean includeDate(LocalDate date) {
 		return  (this.getDateStart().isBefore(date) ||this.getDateStart().isEqual(date))  && 
-				(this.getDateEnd().isAfter(date) ||this.getDateEnd().isAfter(date));
+				(this.getDateEnd().isAfter(date) || this.getDateEnd().isEqual(date));
 	}
 
 	

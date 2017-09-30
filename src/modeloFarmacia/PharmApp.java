@@ -22,23 +22,43 @@ public class PharmApp implements Serializable {
 	private PharmApp() {
 		//Sectores
 		Sector norte = new Sector("NORTE",LocalDate.of(2016, 12, 31));
-
+		Sector sur = new Sector("SUR",LocalDate.of(2016, 12, 31));
+			
 		sectorList.add(norte);
-		sectorList.add(new Sector("SUR",LocalDate.of(2016, 12, 31)));
-		
+		sectorList.add(sur);
+
 		norte.createCycle(LocalDate.of(2017,12,31));
+
+		sur.createCycle(LocalDate.of(2017,12,31));
+		sur.createCycle(LocalDate.of(2018,12,31));
 		
 		//creo las farmacias
 		Pharmacy belgrano = new Pharmacy("Belgrano", "Rivadavia y Av. San Martin", 454064, 450000);
 		Pharmacy callegari = new Pharmacy("Callegari", "De La Fuente y Paso", 452861, 450000);
-		Pharmacy decicco = new Pharmacy("De Cicco", "Gumes y Soloeta", 453064, 450000);
+		Pharmacy decicco = new Pharmacy("De Cicco", "Guemes y Soloeta", 453064, 450000);
 		Pharmacy dimatteo = new Pharmacy("Di Matteo", "Dr. Torras y Moreno", 452088, 450000);
 		Pharmacy garcia = new Pharmacy("Garcia", "Dr Ortiz Nro 34", 454263, 453333);
 
 		
+		//Creo los eventos especiales
+		this.addSpeciaEvent(new SpecialEvent(	"Chancho Movil",
+												"Chancho Movil - Club Belgrano",
+												LocalDate.of(2017,3,10),
+												LocalDate.of(2017,3,15),
+												"Estamos en la plaza todas las tardes, vendiendo el habitual chanchomovil, "));
 		
+		this.addSpeciaEvent(new SpecialEvent("CINE",
+										"Nueva Pelicula - IT",
+										LocalDate.of(2017,3,16),
+										LocalDate.of(2017,3, 23),
+										"Se estará estrenando IT - el payaso asesino, toda esta semana en cartelera"));
 		
-		
+		this.addSpeciaEvent(new SpecialEvent("Casa de campo",
+				"INFO - Jejenes",
+				LocalDate.of(2017,3,16),
+				LocalDate.of(2017,3, 30),
+				"Casa de campo informa que hoy y hasta el dia 30 se estará fumigando contra los Jejenes."));
+
 		
 		//creo las obras sociales
 		SocialWork obraS1 = new SocialWork("OSDE", "sarasa 1000", 456666);
@@ -56,8 +76,9 @@ public class PharmApp implements Serializable {
 		norte.addPharmacy(belgrano);
 		norte.addPharmacy(callegari);
 		norte.addPharmacy(decicco);
-		norte.addPharmacy(dimatteo);
-		norte.addPharmacy(garcia);
+		
+		sur.addPharmacy(dimatteo);
+		sur.addPharmacy(garcia);
 
 	}
 	
@@ -93,10 +114,13 @@ public class PharmApp implements Serializable {
 		return this.getSectorList().stream().map(s -> s.getPharmacyList()).flatMap(l -> l.stream()).collect(Collectors.toList());
 	}
 	
+	public void addSpecialEvent(SpecialEvent se){
+			this.getSpecialEventList().add(se);
+	}
 	
 //getters y setters
 	public LocalDate getDate() {
-			// ESTO DEBE SER LocalDate.now();
+			//TODO ESTO DEBE SER LocalDate.now();
 			return date;
 	}
 
@@ -132,5 +156,11 @@ public class PharmApp implements Serializable {
 
 	public void setSocialWorks(List<SocialWork> socialWorks) {
 		this.socialWorks = socialWorks;
+	}
+
+	public List<SpecialEvent> getSpecialEventListTo(LocalDate date2) {
+		return this.getSpecialEventList().stream()
+				.filter(se -> se.includeDate(date2))
+				.collect(Collectors.toList());
 	}	
 }
