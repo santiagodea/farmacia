@@ -9,7 +9,10 @@ public class Pharmacy extends InfoStandard implements Serializable{
 	private List<SocialWork> socialWorks = new ArrayList<>();
 
 	//constructor
-	public Pharmacy(String name,String address, int landphone, int alternativePhone) {
+	public Pharmacy() {
+		super();
+	}
+	public Pharmacy(String name,String address, Integer landphone, Integer alternativePhone) {
 		super(name, address , landphone, alternativePhone);
 	}
 	

@@ -4,18 +4,22 @@ public abstract class InfoStandard {
 
 	private String name;
 	private String address;
-	private int landphone;
-	private int alternativePhone;
+	private Integer landphone;
+	private Integer alternativePhone;
 
 	
 //constructors
-	public InfoStandard(String name, String address, int landphone) {
+	public InfoStandard() {
+		
+	}
+	
+	public InfoStandard(String name, String address, Integer landphone) {
 		this.setName(name);
 		this.setAddress(address);
 		this.setLandPhone(landphone);
 	}
 	
-	public InfoStandard(String name, String address, int landphone, int alternativePhone) {
+	public InfoStandard(String name, String address, Integer landphone, Integer alternativePhone) {
 		this.setName(name);
 		this.setAddress(address);
 		this.setLandPhone(landphone);
@@ -59,19 +63,19 @@ public abstract class InfoStandard {
 		this.address = address;
 	}
 
-	public int getLandPhone() {
+	public Integer getLandPhone() {
 		return landphone;
 	}
 
-	public void setLandPhone(int tel) {
+	public void setLandPhone(Integer tel) {
 		this.landphone = tel;
 	}
 
-	public int getAlternativePhone() {
+	public Integer getAlternativePhone() {
 		return alternativePhone;		
 	}
 
-	public void setAlternativePhone(int alternativePhone) {
+	public void setAlternativePhone(Integer alternativePhone) {
 		this.alternativePhone = alternativePhone;
 	}
 }

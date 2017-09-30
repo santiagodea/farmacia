@@ -67,16 +67,16 @@ public class PharmacyEditionPanel extends Panel{
 		}; 
 		this.add(cancelAction);
 	
-		Link<String> confirmAction = new Link<String>("doAddPharmacy") {
-			private static final long serialVersionUID = 6693007657356760682L;
-	
-			@Override
-			public void onClick() {
-				PharmacyEditionPanel.this.controller.accept();
-				this.setResponsePage(PagePharmacy.class);				
-			}
-		}; 
-		this.add(confirmAction);
+//		Link<String> confirmAction = new Link<String>("doAddPharmacy") {
+//			private static final long serialVersionUID = 6693007657356760682L;
+//	
+//			@Override
+//			public void onClick() {
+//				PharmacyEditionPanel.this.controller.accept();
+//				this.setResponsePage(PagePharmacy.class);				
+//			}
+//		}; 
+//		this.add(confirmAction);
 }
 }
 

@@ -22,16 +22,16 @@ public class AddPharmacyPage extends WebPage {
 	}
 
 	private void fillForm() {
-		Form<PharmacyEditionController> bandMainDataForm = new Form<PharmacyEditionController>("pharmacyForm") {
-			private static final long serialVersionUID = 1L;
-			
+		Form<PharmacyEditionController> pharmMainDataForm = new Form<PharmacyEditionController>("pharmacyForm") {
+			private static final long serialVersionUID = -5411419842286148197L;
+			@Override
 			protected void onSubmit() {
 				AddPharmacyPage.this.controller.accept();
 				this.setResponsePage(PagePharmacy.class);			
 			}	
 	};
-		bandMainDataForm.add(new PharmacyEditionPanel("pharmacyFormFields", this.controller));
-		this.add(bandMainDataForm);
+		pharmMainDataForm.add(new PharmacyEditionPanel("pharmacyFormFields", this.controller));
+		this.add(pharmMainDataForm);
 		
 	}
 	

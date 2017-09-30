@@ -41,8 +41,9 @@ public class PharmacyEditionController implements Serializable{
 		
 		public void accept() {
 			Pharmacy newPharmacy = this.buildPharmacy();
-			newPharmacy.addSocialWork(new SocialWork("IOMA", "calle olvidada", 252559));
-			PharmApp.store().addPharmacyToSector(newPharmacy,this.getSector().getName());
+			newPharmacy.addSocialWork(new SocialWork("afas", "calle olvidada", 25252559));
+			PharmApp.store().addPharmacyToSector(newPharmacy,"norte");//this.getSector().getName());
+
 		}
 		
 		public Pharmacy buildPharmacy() {
