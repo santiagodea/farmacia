@@ -1,6 +1,7 @@
 package web.LoadCycle.mainAdmin;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -8,6 +9,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 
 import modeloFarmacia.Cycle;
+import web.LoadCycle.newCycle.NewCyclePage;
 
 public class PanelCycle extends Panel {
 	private static final long serialVersionUID = -6914789013649545486L;
@@ -17,6 +19,7 @@ public class PanelCycle extends Panel {
 	public PanelCycle(String id, ControllerMainAdmin controller) {
 		super(id);
 		this.setController(controller);
+		this.addButton();
 		this.fillCycleList();
 	}
 	
@@ -35,6 +38,8 @@ public class PanelCycle extends Panel {
 				panel.add(new Label("until", comp.bind("dateEnd")));
 				
 				//TODO boton para editar??? en el ultimo
+				
+				
 			}
 		};
 		this.add(listV);
@@ -45,6 +50,20 @@ public class PanelCycle extends Panel {
 	public boolean isVisible() {
 		return super.isVisible() && this.getController().hasSectorSelected();
 	}
+	
+	public void addButton(){
+			Link<String> addAction = new Link<String>("addCycle") {
+				private static final long serialVersionUID = -901862819067967823L;
+		
+				@Override
+				public void onClick() {
+					this.setResponsePage(NewCyclePage.class);
+					
+				}
+			}; 
+			this.add(addAction);
+}
+	
 
 //Setters y Getters
 	public ControllerMainAdmin getController() {

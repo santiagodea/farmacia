@@ -33,12 +33,34 @@ public class PharmApp implements Serializable {
 		sur.createCycle(LocalDate.of(2018,12,31));
 		
 		//creo las farmacias
+		
+		//NORTE
 		Pharmacy belgrano = new Pharmacy("Belgrano", "Rivadavia y Av. San Martin", 454064, 450000);
-		Pharmacy callegari = new Pharmacy("Callegari", "De La Fuente y Paso", 452861, 450000);
-		Pharmacy decicco = new Pharmacy("De Cicco", "Guemes y Soloeta", 453064, 450000);
+		Pharmacy callegari = new Pharmacy("Callegari", "De La Fuente y Paso", 452861, 450000);	
 		Pharmacy dimatteo = new Pharmacy("Di Matteo", "Dr. Torras y Moreno", 452088, 450000);
-		Pharmacy garcia = new Pharmacy("Garcia", "Dr Ortiz Nro 34", 454263, 453333);
-
+		Pharmacy garcia = new Pharmacy("Garcia", "Dr Ortiz N 34", 454263, 453333);
+		Pharmacy pasteris = new Pharmacy("Pasteris", "Av. Sarmiento y Av. Espa�a", 454981, 450000);
+		
+		norte.addPharmacy(belgrano);
+		norte.addPharmacy(callegari);
+		norte.addPharmacy(dimatteo);
+		norte.addPharmacy(garcia);
+		norte.addPharmacy(pasteris);
+		
+		
+		//SUR
+		Pharmacy decicco = new Pharmacy("De Cicco", "Guemes y Soloeta", 453064, 450000);
+		Pharmacy pasteur = new Pharmacy("Pasteur", "Rivadavia N 300", 452254, 450000);
+		Pharmacy puyssegur = new Pharmacy("Puyssegur", "Saavedra N 443", 453875, 450000);
+		Pharmacy soloeta = new Pharmacy("Soloeta", "Av. San Martin N 697", 454063, 450000);
+		Pharmacy valerga = new Pharmacy("Valerga", "Av. Italia y Av. 9 de Julio", 454414, 453333);
+		
+		sur.addPharmacy(decicco);
+		sur.addPharmacy(pasteur);
+		sur.addPharmacy(puyssegur);
+		sur.addPharmacy(soloeta);
+		sur.addPharmacy(valerga);
+		
 		
 		//Creo los eventos especiales
 		this.addSpeciaEvent(new SpecialEvent(	"Chancho Movil",
@@ -51,37 +73,40 @@ public class PharmApp implements Serializable {
 										"Nueva Pelicula - IT",
 										LocalDate.of(2017,3,16),
 										LocalDate.of(2017,3, 23),
-										"Se estará estrenando IT - el payaso asesino, toda esta semana en cartelera"));
+										"Se estara estrenando IT - el payaso asesino, toda esta semana en cartelera"));
 		
 		this.addSpeciaEvent(new SpecialEvent("Casa de campo",
 				"INFO - Jejenes",
 				LocalDate.of(2017,3,16),
 				LocalDate.of(2017,3, 30),
-				"Casa de campo informa que hoy y hasta el dia 30 se estará fumigando contra los Jejenes."));
+				"Casa de campo informa que hoy y hasta el dia 30 se estara fumigando contra los Jejenes."));
 
 		
 		//creo las obras sociales
 		SocialWork obraS1 = new SocialWork("OSDE", "sarasa 1000", 456666);
 		SocialWork obraS2 = new SocialWork("IOMA", "sarasa 1300", 455555);
-		SocialWork obraS3 = new SocialWork("GALENO", "sarasa 1200", 455555);
+		SocialWork obraS3 = new SocialWork("Galeno", "sarasa 1200", 455555);
 		SocialWork obraS4 = new SocialWork("OSPE", "sarasa 1500", 455555);
+		SocialWork obraS5 = new SocialWork("Medife", "sarasa 1700", 455555);
+		SocialWork obraS6 = new SocialWork("Swiss Medical", "sarasa 1800", 455555);
+		SocialWork obraS7 = new SocialWork("Medicus", "sarasa 3000", 455555);
+		SocialWork obraS8 = new SocialWork("OSPLAD", "sarasa 3800", 455555);
 		
 		this.getSocialWorks().add(obraS1);
 		this.getSocialWorks().add(obraS2);
 		this.getSocialWorks().add(obraS3);
 		this.getSocialWorks().add(obraS4);
+		this.getSocialWorks().add(obraS5);
+		this.getSocialWorks().add(obraS6);
+		this.getSocialWorks().add(obraS7);
+		this.getSocialWorks().add(obraS8);
 
 		belgrano.addSocialWork(obraS1);
 		belgrano.addSocialWork(obraS2);
 		
 		callegari.addSocialWork(obraS1);
 		
-		norte.addPharmacy(belgrano);
-		norte.addPharmacy(callegari);
-		norte.addPharmacy(decicco);
 		
-		sur.addPharmacy(dimatteo);
-		sur.addPharmacy(garcia);
 
 	}
 	
