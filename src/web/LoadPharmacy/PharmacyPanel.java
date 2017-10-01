@@ -1,6 +1,7 @@
 package web.LoadPharmacy;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -11,9 +12,13 @@ public class PharmacyPanel  extends Panel{
 	
 	
 	private ControllerPharmacy controller;
-
+	
+	private void fillChecked() {
+		controller.getChosenPharmacy().getSocialWorks().forEach(s -> controller.checked.add(new CheckController(s, false)));	
+	}
 	public PharmacyPanel(String id, ControllerPharmacy pageController) {
 		super(id);
+		
 		this.controller = pageController;
 		
 		this.add(new Label("name", new PropertyModel<>(this.controller, "chosenPharmacy.name")));
@@ -22,16 +27,39 @@ public class PharmacyPanel  extends Panel{
 		this.add(new Label("alternativePhone", new PropertyModel<>(this.controller, "chosenPharmacy.alternativePhone")));
 		
 		//NO ANDA - TENGO QUE MOSTRAR ALGO ASI: "OSDE,IOMA, GALENO".
-//		this.add(new ListView<String>("socialWorks", new PropertyModel<>(this.controller,"socialWorksListName" )) {
-//			private static final long serialVersionUID = 1L;
+		
+
+		@SuppressWarnings("unchecked")
+		ListView listView = new ListView("list", controller.checked){
+			private static final long serialVersionUID = 863206267687450733L;
+
+			protected void populateItem(ListItem item){
+                CheckController controller = (CheckController)item.getModelObject();
+                item.add(new Label("name", controller.getName()));
+            }
+        };
+         listView.setReuseItems(true);
+         add(listView);
+	}
+	
+//	protected void populateItem(ListItem<Pharmacy> panel) {
+//		Pharmacy thePharmacy = panel.getModelObject();
+//		final Link<String> nameLink = new Link<String>("name") {
+//			private static final long serialVersionUID = 4224659757950892063L;
 //
 //			@Override
-//			protected void populateItem(ListItem<String> item) {
-//				item.add(new Label("socialWorks", new PropertyModel<>(item.getModelObject(), "socialWorksListName")));
+//			public void onClick() {
+//				PagePharmacy.this.controller.setChosenPharmacy(thePharmacy);
 //				
 //			}
-//		}); 
-	}
+			
+//		};
+//		nameLink.setBody(new PropertyModel<>(thePharmacy, "name"));
+//		panel.add(nameLink);
+//		panel.add(new Label("address", new PropertyModel<>(thePharmacy, "address")));
+//		panel.add(new Label("landphone", new PropertyModel<>(thePharmacy, "landphone")));	
+//		
+//	}
 
 
 

@@ -1,6 +1,8 @@
 package web.LoadPharmacy;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,10 +14,12 @@ public class ControllerPharmacy implements Serializable{
 	
 	private Pharmacy pharmacy;
 	private PharmApp app;	
+	protected List<CheckController> checked = new ArrayList<>();
 	//constructor
 	public ControllerPharmacy() {
 		this.pharmacy = null;
 		this.app = PharmApp.store();
+		
 	}
 	
 
@@ -35,7 +39,10 @@ public class ControllerPharmacy implements Serializable{
 	}
 	
 	public void setChosenPharmacy(Pharmacy pharmacy) { 
+		checked.clear();
+		pharmacy.getSocialWorks().forEach(s -> checked.add(new CheckController(s, false)));
 		this.pharmacy = pharmacy;
+		
 	}
 	public Pharmacy getChosenPharmacy() { 
 		return pharmacy;
@@ -48,7 +55,12 @@ public class ControllerPharmacy implements Serializable{
 	}
 	
 	public List<String> socialWorksListName(){
-		return this.getPharmacy().getSocialWorks().stream().map(s -> s.getAddress()).collect(Collectors.toList());
+		if (this.getPharmacy().getSocialWorks().stream().map(s -> s.getAddress()).collect(Collectors.toList()) == null) {
+			return (new ArrayList<>(Arrays.asList("")));
+		}
+		else {
+			return this.getPharmacy().getSocialWorks().stream().map(s -> s.getAddress()).collect(Collectors.toList());
+		}
 		
 	}
 	

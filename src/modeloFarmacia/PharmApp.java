@@ -62,11 +62,14 @@ public class PharmApp implements Serializable {
 		
 		//creo las obras sociales
 		SocialWork obraS1 = new SocialWork("OSDE", "sarasa 1000", 456666);
-		SocialWork obraS2 = new SocialWork("IOMA", "sarasa 1100", 455555);
+		SocialWork obraS2 = new SocialWork("IOMA", "sarasa 1300", 455555);
+		SocialWork obraS3 = new SocialWork("GALENO", "sarasa 1200", 455555);
+		SocialWork obraS4 = new SocialWork("OSPE", "sarasa 1500", 455555);
 		
 		this.getSocialWorks().add(obraS1);
 		this.getSocialWorks().add(obraS2);
-
+		this.getSocialWorks().add(obraS3);
+		this.getSocialWorks().add(obraS4);
 
 		belgrano.addSocialWork(obraS1);
 		belgrano.addSocialWork(obraS2);

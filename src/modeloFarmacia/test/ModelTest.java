@@ -32,7 +32,6 @@ public class ModelTest {
 	SocialWork obraS1 = new SocialWork("OSDE", "sarasa 1000", 456666);
 	SocialWork obraS2 = new SocialWork("IOMA", "sarasa 1100", 455555);
 	
-
 	
 	@Before
 	public void init(){
@@ -41,6 +40,9 @@ public class ModelTest {
 		farmacia1.addSocialWork(obraS1);
 		farmacia1.addSocialWork(obraS2);
 		farmacia2.addSocialWork(obraS2);
+		
+		PharmApp.store().getSocialWorks().add(obraS1);
+		PharmApp.store().getSocialWorks().add(obraS2);
 
 	}
 	

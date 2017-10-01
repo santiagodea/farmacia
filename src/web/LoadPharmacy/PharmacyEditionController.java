@@ -1,7 +1,9 @@
 package web.LoadPharmacy;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import modeloFarmacia.PharmApp;
 import modeloFarmacia.Pharmacy;
@@ -15,10 +17,11 @@ public class PharmacyEditionController implements Serializable{
 	protected String address;
 	protected Integer landphone;
 	protected Integer alternativePhone;
-	protected List<SocialWork> socialWorkSelected;
 	protected List<SocialWork> socialWorks;
 	protected Sector sector;
 	protected List<Sector> sectorList;
+	
+	protected List<CheckController> checked = new ArrayList<>();
 	
 	public PharmacyEditionController() { 
 		}
@@ -28,7 +31,6 @@ public class PharmacyEditionController implements Serializable{
 			this.setAddress(pharmacy.getAddress());
 			this.setAlternativePhone(pharmacy.getAlternativePhone());
 			this.setLandphone(pharmacy.getLandPhone());
-			this.setSocialWorksSelected(pharmacy.getSocialWorks());
 			this.setSectorList(PharmApp.store().getSectorList());
 			
 		}
@@ -42,12 +44,18 @@ public class PharmacyEditionController implements Serializable{
 		public void accept() {
 			Pharmacy newPharmacy = this.buildPharmacy();
 			newPharmacy.addSocialWork(new SocialWork("afas", "calle olvidada", 25252559));
-			PharmApp.store().addPharmacyToSector(newPharmacy,"norte");//this.getSector().getName());
+			newPharmacy.setSocialWorks(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getSocialwork()).collect(Collectors.toList()));
+			
+			
+			PharmApp.store().addPharmacyToSector(newPharmacy,"norte");
 
 		}
 		
 		public Pharmacy buildPharmacy() {
 			return new Pharmacy(this.getName(), this.getAddress(), this.getLandphone(), this.getAlternativePhone());
+			
+			
+			
 		}
 		
 		public List<Sector> getSectorToShow() {
@@ -89,22 +97,6 @@ public class PharmacyEditionController implements Serializable{
 			this.alternativePhone = alternativePhone;
 		}
 
-		public List<SocialWork> getSocialWorksSelected() {
-		
-			return socialWorkSelected;
-		}
-
-		public void setSocialWorksSelected(List<SocialWork> socialWorks) {
-			this.socialWorkSelected = socialWorks;
-		}
-
-		public List<SocialWork> getSocialWorkSelected() {
-			return socialWorkSelected;
-		}
-
-		public void setSocialWorkSelected(List<SocialWork> socialWorkSelected) {
-			this.socialWorkSelected = socialWorkSelected;
-		}
 
 		public Sector getSector() {
 			return sector;

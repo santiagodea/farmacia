@@ -5,13 +5,18 @@ package web.LoadPharmacy;
 
 import java.util.List;
 
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.NumberTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.PropertyModel;
 
 import modeloFarmacia.PharmApp;
 import modeloFarmacia.SocialWork;
@@ -20,16 +25,24 @@ public class PharmacyEditionPanel extends Panel{
 	private static final long serialVersionUID = 2451481869719251482L;
 
 	protected PharmacyEditionController controller;
-	List<SocialWork> theSocials = PharmApp.store().getSocialWorks();
+	protected List<SocialWork> theSocials = PharmApp.store().getSocialWorks();
+	
 
 	
 	public PharmacyEditionPanel(String id, PharmacyEditionController _controller) {
 		super(id);
 		this.controller = _controller;
+		this.fillChecked();
 		this.fillPanel();
 		this.fillOkCancelButtons();
-		
+
+
 	}
+
+	private void fillChecked() {
+		theSocials.forEach(s -> controller.checked.add(new CheckController(s, false)));	
+	}
+
 
 	protected void fillPanel() {
 		CompoundPropertyModel<PharmacyEditionController> controllerModel = new CompoundPropertyModel<>(this.controller);
@@ -47,14 +60,21 @@ public class PharmacyEditionPanel extends Panel{
 				, controllerModel.bind("sectorToShow")   // list-of-options binding
 				, new ChoiceRenderer<>("name")    // what to show for each option   
 		));
-	
-//	this.add(new CheckBoxMultipleChoice<SocialWork>("socialWork", 
-//									new ListModel<SocialWork>(new ArrayList<SocialWork>()), 
-//									theSocials, 
-//									new ChoiceRenderer<SocialWork>("name"))); 
-//	
-//	
-	}
+
+		@SuppressWarnings("unchecked")
+		ListView listView = new ListView("list", controller.checked){
+			private static final long serialVersionUID = 863206267687440733L;
+
+			protected void populateItem(ListItem item){
+                CheckController controller = (CheckController)item.getModelObject();
+                item.add(new Label("name", controller.getName()));
+                item.add(new CheckBox("check", new PropertyModel(controller, "checked")));
+            }
+        };
+         listView.setReuseItems(true);
+         add(listView);
+    }
+
 	private void fillOkCancelButtons() {
 		Link<String> cancelAction = new Link<String>("cancelAction") {
 			private static final long serialVersionUID = 3251048626635072477L;
@@ -66,17 +86,7 @@ public class PharmacyEditionPanel extends Panel{
 			}
 		}; 
 		this.add(cancelAction);
-	
-//		Link<String> confirmAction = new Link<String>("doAddPharmacy") {
-//			private static final long serialVersionUID = 6693007657356760682L;
-//	
-//			@Override
-//			public void onClick() {
-//				PharmacyEditionPanel.this.controller.accept();
-//				this.setResponsePage(PagePharmacy.class);				
-//			}
-//		}; 
-//		this.add(confirmAction);
+
 }
 }
 
