@@ -138,7 +138,7 @@ public class ModelTest {
 		Pharmacy s = new Pharmacy("Soloeta25", "20 n210", 453131, 453132);
 		
 		PharmacyEditionController controller = new PharmacyEditionController();
-		controller.setBandToBeUpdated(s);
+		controller.setPharmToBeUpdated(s);
 		
 		controller.accept();
 		

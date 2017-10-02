@@ -13,6 +13,7 @@ public class Cycle implements Serializable {
 	private Collection<Exception> exceptions = new ArrayList<>();
 	private LocalDate dateStart; // automaticamente al crearlo se asigna la fecha siguiente al ultimo siglo vigente.
 	private LocalDate dateEnd;
+	private List<Pharmacy> pharmacyList = new ArrayList<>();
 	
 //constructor
 	public Cycle(LocalDate dateStart, LocalDate dateEnd){
@@ -98,6 +99,10 @@ public class Cycle implements Serializable {
 	private boolean existExceptionWithDate(LocalDate actualDate) {
 		return this.getExceptions().stream().anyMatch(e -> e.getDate().equals(actualDate));
 	}
+	
+	public void addPharmacy(Pharmacy pharmacy) {
+		this.getPharmacyList().add(pharmacy);
+	}
 
 
 	//setters y getters
@@ -123,6 +128,16 @@ public class Cycle implements Serializable {
 
 	public void setDateEnd(LocalDate dateEnd) {
 		this.dateEnd = dateEnd;
+	}
+
+
+	public List<Pharmacy> getPharmacyList() {
+		return pharmacyList;
+	}
+
+
+	public void setPharmacyList(List<Pharmacy> pharmacyList) {
+		this.pharmacyList = pharmacyList;
 	}
 
 }
