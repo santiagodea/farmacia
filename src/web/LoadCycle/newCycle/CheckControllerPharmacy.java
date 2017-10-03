@@ -10,7 +10,7 @@ public class CheckControllerPharmacy {
 	
 	public CheckControllerPharmacy(Pharmacy thePharmacy) {
 		this.setPharmacy(thePharmacy);
-		this.setChecked(false);
+		this.setChecked(true);
 	}
 
 
