@@ -40,7 +40,7 @@ public class ControllerPharmacy implements Serializable{
 	
 	public void setChosenPharmacy(Pharmacy pharmacy) { 
 		checked.clear();
-		pharmacy.getSocialWorks().forEach(s -> checked.add(new CheckController(s, false)));
+		pharmacy.getSocialWorks().forEach(s -> checked.add(new CheckController(s)));
 		this.pharmacy = pharmacy;
 		
 	}

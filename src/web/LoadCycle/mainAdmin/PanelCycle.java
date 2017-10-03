@@ -57,13 +57,13 @@ public class PanelCycle extends Panel {
 		
 				@Override
 				public void onClick() {
-					this.setResponsePage(NewCyclePage.class);
+					this.setResponsePage(new NewCyclePage(PanelCycle.this.controller));
 					
 				}
 			}; 
 			this.add(addAction);
 }
-	
+
 
 //Setters y Getters
 	public ControllerMainAdmin getController() {

@@ -1,8 +1,5 @@
 package web.LoadPharmacy;
 
-
-
-
 import java.util.List;
 
 import org.apache.wicket.markup.html.basic.Label;
@@ -25,22 +22,19 @@ public class PharmacyEditionPanel extends Panel{
 	private static final long serialVersionUID = 2451481869719251482L;
 
 	protected PharmacyEditionController controller;
+	
 	protected List<SocialWork> theSocials = PharmApp.store().getSocialWorks();
-	
 
-	
 	public PharmacyEditionPanel(String id, PharmacyEditionController _controller) {
 		super(id);
 		this.controller = _controller;
 		this.fillChecked();
 		this.fillPanel();
 		this.fillOkCancelButtons();
-
-
 	}
 
 	private void fillChecked() {
-		theSocials.forEach(s -> controller.checked.add(new CheckController(s, false)));	
+		theSocials.forEach(s -> controller.checked.add(new CheckController(s)));	
 	}
 
 
