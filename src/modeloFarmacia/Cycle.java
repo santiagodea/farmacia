@@ -14,26 +14,22 @@ public class Cycle implements Serializable {
 	private Collection<Exception> exceptions = new ArrayList<>();
 	private LocalDate dateStart; // automaticamente al crearlo se asigna la fecha siguiente al ultimo siglo vigente.
 	private LocalDate dateEnd;
-<<<<<<< HEAD
 	private List<Pharmacy> pharmacysInCycle = new ArrayList<>();
 	private Sector sector;
-=======
-	private List<Pharmacy> pharmacyList = new ArrayList<>();
->>>>>>> refs/remotes/origin/master
-	
+
 //constructor
-	
-	
-	
+
+
+
 	public Cycle(LocalDate dateStart, LocalDate cycleEndDate, Sector sector2) {
 		this.setDateStart(dateStart);
 		this.setDateEnd(cycleEndDate);
 		this.sector = sector2;
 	}
 
-	
-//Methods	
-	
+
+//Methods
+
 	//agrega una excepcion al ciclo, si es que puede
 	public void addException(Exception aException) {
 		if (this.canIAddException(aException)){
@@ -43,7 +39,7 @@ public class Cycle implements Serializable {
 			throw new RuntimeException("La Excepcion no se puede agregar al ciclo");
 		}
 	}
-	
+
 	public void addOrReplaceException(Exception aException) {
 		  Optional<Exception> theException = this.findException(aException) ;
 
@@ -55,7 +51,7 @@ public class Cycle implements Serializable {
 			theException.get().setPharmacy(aException.getPharmacy());
 		}
 	}
-	
+
 	private  Optional<Exception> findException(Exception aException) {
 		return this.getExceptions().stream()
 									.filter(e -> e.getDate().equals(aException.getDate()))
@@ -70,11 +66,11 @@ public class Cycle implements Serializable {
 
 
 	public boolean includeDate(LocalDate date) {
-		return  (this.getDateStart().isBefore(date) ||this.getDateStart().isEqual(date))  && 
+		return  (this.getDateStart().isBefore(date) ||this.getDateStart().isEqual(date))  &&
 				(this.getDateEnd().isAfter(date) || this.getDateEnd().isEqual(date));
 	}
 
-	
+
 	public Pharmacy getShiftPharmacy(LocalDate actualDate) {
 		Pharmacy pharmacy;
 		if(this.existExceptionWithDate(actualDate)){
@@ -84,7 +80,7 @@ public class Cycle implements Serializable {
 		}
 		return  pharmacy;
 	}
-	
+
 	public Pharmacy getPharmacyWithOutException( LocalDate actualDate) {
 		return this.getPharmacysInCycle().get(this.getPharmacyIndex(actualDate));
 	}
@@ -103,14 +99,14 @@ public class Cycle implements Serializable {
 	private boolean existExceptionWithDate(LocalDate actualDate) {
 		return this.getExceptions().stream().anyMatch(e -> e.getDate().equals(actualDate));
 	}
-	
+
 	public void addPharmacy(Pharmacy pharmacy) {
 		this.getPharmacyList().add(pharmacy);
 	}
 
 
 	//setters y getters
-	
+
 	public Collection<Exception> getExceptions() {
 		return exceptions;
 	}
@@ -136,7 +132,6 @@ public class Cycle implements Serializable {
 	}
 
 
-<<<<<<< HEAD
 	public List<Pharmacy> getPharmacysInCycle() {
 		return (this.pharmacysInCycle.isEmpty()) ? this.sector.getPharmacyList() : pharmacysInCycle;
 	}
@@ -144,15 +139,6 @@ public class Cycle implements Serializable {
 
 	public void setPharmacysInCycle(List<Pharmacy> pharmacysInCycle) {
 		this.pharmacysInCycle = pharmacysInCycle;
-=======
-	public List<Pharmacy> getPharmacyList() {
-		return pharmacyList;
-	}
-
-
-	public void setPharmacyList(List<Pharmacy> pharmacyList) {
-		this.pharmacyList = pharmacyList;
->>>>>>> refs/remotes/origin/master
 	}
 
 }
