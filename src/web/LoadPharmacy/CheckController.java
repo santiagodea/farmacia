@@ -10,9 +10,9 @@ public class CheckController implements Serializable{
 	private SocialWork socialwork;
 	private Boolean checked;
 	
-	public CheckController(SocialWork social, Boolean state) {
+	public CheckController(SocialWork social) {
 		socialwork = social;
-		checked = state;
+		checked = false;
 	}
 	
 	

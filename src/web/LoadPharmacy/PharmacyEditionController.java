@@ -26,7 +26,7 @@ public class PharmacyEditionController implements Serializable{
 	public PharmacyEditionController() { 
 		}
 		
-		public void setBandToBeUpdated(Pharmacy pharmacy) {
+		public void setPharmToBeUpdated(Pharmacy pharmacy) {
 			this.setName(pharmacy.getName());
 			this.setAddress(pharmacy.getAddress());
 			this.setAlternativePhone(pharmacy.getAlternativePhone());
@@ -35,7 +35,7 @@ public class PharmacyEditionController implements Serializable{
 			
 		}
 
-		//getters and setters
+	
 		
 		public List<SocialWork> getSocialWorks() {
 			return PharmApp.store().getSocialWorks();
@@ -43,11 +43,8 @@ public class PharmacyEditionController implements Serializable{
 		
 		public void accept() {
 			Pharmacy newPharmacy = this.buildPharmacy();
-			newPharmacy.addSocialWork(new SocialWork("afas", "calle olvidada", 25252559));
 			newPharmacy.setSocialWorks(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getSocialwork()).collect(Collectors.toList()));
-			
-			
-			PharmApp.store().addPharmacyToSector(newPharmacy,"norte");
+			PharmApp.store().addPharmacyToSector(newPharmacy,sector.getName());
 
 		}
 		
