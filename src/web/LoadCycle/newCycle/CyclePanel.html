@@ -8,7 +8,6 @@
 </head>
 <body>
 	
-	<form class="form-horizontal" wicket:id="bandForm">
 		<wicket:panel>
 			<div class="form-group">
 				<label for="start" class="control-label col-sm-2">Fecha de Inicio: </label>
@@ -19,8 +18,8 @@
 			<div class="form-group">
 				<label for="end" class="control-label col-sm-2">Fecha de Fin: </label>
 				<div class="col-sm-2">
-<!-- 					<input type="text" class="form-control" id="end" wicket:id="end" placeholder="AAAA-MM-DD"> -->
-						<input type="text" id="datepicker" wicket:id="end">
+					<input type="text" class="form-control" id="end" wicket:id="end" placeholder="AAAA-MM-DD">
+<!-- 						<input type="text" wicket:id="end"> -->
 				</div>
 			</div>
 				
@@ -39,10 +38,8 @@
 						Cancelar
 					</button>
 					<input type="submit" class="btn btn-primary" value="Guardar CICLO">
-
 				</div>
-			
+					
 		</wicket:panel>
-		</form>
 </body>
 </html>

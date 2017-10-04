@@ -1,8 +1,11 @@
 package web.LoadCycle.newCycle;
 
+import java.io.Serializable;
+
 import modeloFarmacia.Pharmacy;
 
-public class CheckControllerPharmacy {
+public class CheckControllerPharmacy implements Serializable {
+	private static final long serialVersionUID = 1626472719750032902L;
 
 	private Boolean checked;
 	

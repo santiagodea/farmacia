@@ -34,16 +34,17 @@ public class CyclePanel extends Panel {
 	
 		// fields
 		this.add(new Label("start", controllerModel.bind("dateStart")));
-		this.add(new TextField<>("end", controllerModel.bind("dateEnd")));
+		this.add(new TextField<>("end", controllerModel.bind("dateEndString")));
 		
 		@SuppressWarnings("unchecked")
-		ListView listView = new ListView("list", controllerC.getChecked()){
+		ListView<CheckControllerPharmacy> listView = new ListView<CheckControllerPharmacy>("list", controllerC.getChecked()){
 			private static final long serialVersionUID = 863206267657440733L;
 
-			protected void populateItem(ListItem item){
-				CheckControllerPharmacy controller = (CheckControllerPharmacy)item.getModelObject();
+			protected void populateItem(ListItem<CheckControllerPharmacy> item){
+				CheckControllerPharmacy controller = item.getModelObject();
                 item.add(new Label("name", controller.getName()));
                 item.add(new CheckBox("check", new PropertyModel(controller, "checked")));
+                //TODO el property no tiene el tipo
             }
         };	
          listView.setReuseItems(true);
@@ -63,11 +64,11 @@ public class CyclePanel extends Panel {
 		this.add(cancelAction);
 
 	}
-	protected void onSubmit() {
-		System.out.println("que vergaaaaaaaaaaaa");
-		CyclePanel.this.controllerC.accept();
-		this.setResponsePage(MainAdmin.class);
-	}
+//	protected void onSubmit() {
+//		System.out.println("que vergaaaaaaaaaaaa");
+//		CyclePanel.this.controllerC.accept();
+//		this.setResponsePage(MainAdmin.class);
+//	}
 
 
 

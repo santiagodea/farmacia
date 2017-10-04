@@ -30,7 +30,6 @@ public class NewCyclePage extends WebPage {
 			private static final long serialVersionUID = -5411419842286148197L;
 			@Override
 			protected void onSubmit() {
-				System.out.println("que vergaaaaaaaaaaaa");
 				NewCyclePage.this.controller.accept();
 				this.setResponsePage(MainAdmin.class);
 			}	

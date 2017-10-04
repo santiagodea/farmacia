@@ -15,9 +15,9 @@ import modeloFarmacia.Sector;
 public class CycleController implements Serializable{
 	private static final long serialVersionUID = 3940621338505746999L;
 	
-	private Collection<Exception> exceptions = new ArrayList<>();
 	private LocalDate dateStart; // automaticamente al crearlo se asigna la fecha siguiente al ultimo siglo vigente.
 	private LocalDate dateEnd;
+	private String dateEndString;
 	private List<Pharmacy> pharmacyList = new ArrayList<>();
 	
 	
@@ -33,7 +33,7 @@ public class CycleController implements Serializable{
 	}
 	
 	private LocalDate getDateEndCycle() {
-		return getSector().getCycles().get(getSector().getCycles().size() -1 ).getDateEnd();
+		return getSector().getCycles().get(getSector().getCycles().size() -1 ).getDateEnd().plusDays(1);
 	}
 
 	public void fillChecked() {
@@ -41,7 +41,7 @@ public class CycleController implements Serializable{
 	}
 	
 	public void setCycleToBeUpdated(Cycle cycle) {
-		this.setExceptions(cycle.getExceptions());
+//		this.setExceptions(cycle.getExceptions());
 		this.setDateEnd(cycle.getDateEnd());
 		this.setPharmacyList(cycle.getPharmacyList());
 	}
@@ -59,19 +59,13 @@ public class CycleController implements Serializable{
 	
 	Cycle newCycle = new Cycle(getDateStart(), getDateEnd());
 
-	newCycle.setExceptions(null);
+//	newCycle.setExceptions(null);
 	newCycle.setPharmacyList(getPharmacyList());
 	return newCycle;
 	
 }
 	
 	//getters and setters
-	public Collection<Exception> getExceptions() {
-		return exceptions;
-	}
-	public void setExceptions(Collection<Exception> exceptions) {
-		this.exceptions = exceptions;
-	}
 	public LocalDate getDateStart() {
 		return dateStart;
 	}
@@ -101,6 +95,15 @@ public class CycleController implements Serializable{
 	}
 	public void setSector(Sector sector) {
 		this.sector = sector;
+	}
+
+	public String getDateEndString() {
+		return dateEndString;
+	}
+
+	public void setDateEndString(String dateEndString) {
+		this.dateEnd = LocalDate.parse(dateEndString);
+		this.dateEndString = dateEndString;
 	}
 	
 }
