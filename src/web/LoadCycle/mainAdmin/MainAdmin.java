@@ -18,9 +18,19 @@ public class MainAdmin extends WebPage {
 		this.controller = new ControllerMainAdmin();
 		this.fillSector();
 		this.add(new PanelCycle("cyclePanel", this.controller));
+		this.add(new PanelException("exceptionPanel", this.controller));
 	}
 
 	
+	public MainAdmin(ControllerMainAdmin controller2) {
+		super();
+		this.controller = controller2;
+		this.fillSector();
+		this.add(new PanelCycle("cyclePanel", this.controller));
+		this.add(new PanelException("exceptionPanel", this.controller));
+	}
+
+
 	private void fillSector() {
 		
 		Form<Sector> form = new Form<Sector>("formSectorSelect"){

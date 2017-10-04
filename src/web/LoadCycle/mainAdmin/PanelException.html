@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<wicket:panel>
+ 			<!--Panel de Excepciones -->
+			<div class ="col-sm-6">
+				<div class ="panel panel-default">
+					<div class="panel-heading">	
+						<h4>Excepciones</h4>
+					</div>
+					<div class="panel-body">	
+						<div class="row">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<form  wicket:id="exceptionFormDate" onchange="formSubmitDate()" id="formDate">
+										<span>Fecha</span>
+										<input type="text" wicket:id="dateException" class="form-control" placeholder="Formato: 2020-12-31">
+									</form>
+									<div wicket:id="pharmacySelect"></div>							
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>Reemplazada</th>
+										<th>Reemplazante</th>
+										<th>Fecha</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr wicket:id="exceptions">
+										<td><span wicket:id="remplaced"></span></td>
+										<td><span wicket:id="remplace"></span></td>
+										<td><span wicket:id="date"></span></td>
+								    </tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+	<script type="text/javascript">
+		function formSubmitDate() {
+			document.getElementById("formDate").submit();
+		}
+	</script>
+</wicket:panel>
+</body>
+</html>

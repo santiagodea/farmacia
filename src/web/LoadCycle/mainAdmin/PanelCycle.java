@@ -1,6 +1,10 @@
 package web.LoadCycle.mainAdmin;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.NumberTextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -9,6 +13,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 
 import modeloFarmacia.Cycle;
+import modeloFarmacia.Sector;
 import web.LoadCycle.newCycle.NewCyclePage;
 
 public class PanelCycle extends Panel {
@@ -16,14 +21,17 @@ public class PanelCycle extends Panel {
 
 	private ControllerMainAdmin controller;
 	
+//Controllers
+	
 	public PanelCycle(String id, ControllerMainAdmin controller) {
 		super(id);
 		this.setController(controller);
 		this.addButton();
 		this.fillCycleList();
 	}
-	
 
+//Methods
+	
 	private void fillCycleList() {
 		ListView<Cycle> listV = new ListView<Cycle>("cycles", new PropertyModel<>(this.controller, "cycles")) {
 			private static final long serialVersionUID = -8567160815495998000L;

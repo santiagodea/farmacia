@@ -30,7 +30,7 @@ public class Sector implements Serializable {
 	
 
 	public void createCycle(LocalDate cycleEndDate) {
-		this.getCycles().add(new Cycle(getNextDayStartDate().plusDays(1), cycleEndDate));
+		this.getCycles().add(new Cycle(getNextDayStartDate().plusDays(1), cycleEndDate, this));
 		this.setNextDayStartDate(cycleEndDate);
 	}
 	
@@ -51,13 +51,15 @@ public class Sector implements Serializable {
 
 	public Pharmacy getShiftPharmacy(LocalDate actualDate) {
 		Cycle findedCycle = this.findCycleWhithDate(actualDate);
-		return findedCycle.getShiftPharmacy(this.getPharmacyList(), actualDate);
+		return findedCycle.getShiftPharmacy(actualDate);
 	}
 	
 	
 	
-	private Cycle findCycleWhithDate(LocalDate actualDate) {
-		Optional<Cycle> posibleCycle = this.getCycles().stream().filter(c -> c.includeDate(actualDate)).findAny();
+	public Cycle findCycleWhithDate(LocalDate actualDate) {
+		Optional<Cycle> posibleCycle = this.getCycles().stream()
+												.filter(c -> c.includeDate(actualDate))
+												.findAny();
 		if(!posibleCycle.isPresent()){
 			throw new RuntimeException("Esta fecha no esta cubierta");
 		}

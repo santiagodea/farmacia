@@ -7,6 +7,7 @@ public class Exception implements Serializable {
 	private static final long serialVersionUID = 7473224003715116061L;
 	private LocalDate date; 
 	private Pharmacy pharmacy;
+	private Cycle cycle;
 
 	//constructor
 	public Exception(LocalDate fecha, Pharmacy farmacia) {
@@ -14,6 +15,10 @@ public class Exception implements Serializable {
 		this.setDate(fecha);
 	}
 		
+	
+	public Pharmacy getPharmacyCalculatedReplaced(){
+		return this.cycle.getPharmacyWithOutException(date);
+	}
 		
 	//getter & setters
 	public LocalDate getDate() {
@@ -29,5 +34,15 @@ public class Exception implements Serializable {
 	
 	public void setPharmacy(Pharmacy farmacia) {
 		this.pharmacy = farmacia;
+	}
+
+
+	public Cycle getCycle() {
+		return cycle;
+	}
+
+
+	public void setCycle(Cycle cycle) {
+		this.cycle = cycle;
 	}
 }

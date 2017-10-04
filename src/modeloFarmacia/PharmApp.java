@@ -39,7 +39,7 @@ public class PharmApp implements Serializable {
 		Pharmacy callegari = new Pharmacy("Callegari", "De La Fuente y Paso", 452861, 450000);	
 		Pharmacy dimatteo = new Pharmacy("Di Matteo", "Dr. Torras y Moreno", 452088, 450000);
 		Pharmacy garcia = new Pharmacy("Garcia", "Dr Ortiz N 34", 454263, 453333);
-		Pharmacy pasteris = new Pharmacy("Pasteris", "Av. Sarmiento y Av. España", 454981, 450000);
+		Pharmacy pasteris = new Pharmacy("Pasteris", "Av. Sarmiento y Av. Espaï¿½a", 454981, 450000);
 		
 		norte.addPharmacy(belgrano);
 		norte.addPharmacy(callegari);
