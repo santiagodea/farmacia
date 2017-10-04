@@ -43,12 +43,12 @@ public class CycleController implements Serializable{
 	public void setCycleToBeUpdated(Cycle cycle) {
 //		this.setExceptions(cycle.getExceptions());
 		this.setDateEnd(cycle.getDateEnd());
-		this.setPharmacyList(cycle.getPharmacyList());
+		this.setPharmacyList(cycle.getPharmacysInCycle());
 	}
 	
 	public void accept() {
 	Cycle newCycle = this.buildCycle();
-	newCycle.setPharmacyList(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getPharmacy()).collect(Collectors.toList()));
+	newCycle.setPharmacysInCycle(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getPharmacy()).collect(Collectors.toList()));
 
 	sector.getCycles().add(newCycle);
 	
@@ -57,10 +57,10 @@ public class CycleController implements Serializable{
 	
 	public Cycle buildCycle() {
 	
-	Cycle newCycle = new Cycle(getDateStart(), getDateEnd());
+	Cycle newCycle = new Cycle(getDateStart(), getDateEnd(),this.sector);
 
 //	newCycle.setExceptions(null);
-	newCycle.setPharmacyList(getPharmacyList());
+	newCycle.setPharmacysInCycle(getPharmacyList());
 	return newCycle;
 	
 }

@@ -101,7 +101,7 @@ public class Cycle implements Serializable {
 	}
 
 	public void addPharmacy(Pharmacy pharmacy) {
-		this.getPharmacyList().add(pharmacy);
+		this.getPharmacysInCycle().add(pharmacy);
 	}
 
 
