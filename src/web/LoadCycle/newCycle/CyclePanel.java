@@ -64,12 +64,6 @@ public class CyclePanel extends Panel {
 		this.add(cancelAction);
 
 	}
-//	protected void onSubmit() {
-//		System.out.println("que vergaaaaaaaaaaaa");
-//		CyclePanel.this.controllerC.accept();
-//		this.setResponsePage(MainAdmin.class);
-//	}
-
 
 
 //getters and setters

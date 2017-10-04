@@ -3,12 +3,10 @@ package web.LoadCycle.newCycle;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import modeloFarmacia.Cycle;
-import modeloFarmacia.Exception;
 import modeloFarmacia.Pharmacy;
 import modeloFarmacia.Sector;
 

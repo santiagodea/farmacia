@@ -135,22 +135,6 @@ public class ModelTest {
 	}
 	
 	
-	@Test
-	public void testSanti(){
-		Pharmacy s = new Pharmacy("Soloeta25", "20 n210", 453131, 453132);
-		
-		PharmacyEditionController controller = new PharmacyEditionController();
-		controller.setPharmToBeUpdated(s);
-		
-		controller.accept();
-		
-		//assertEquals(3,PharmApp.store().pharmacyList().size());
-		
-		//System.out.println(PharmApp.store().pharmacyList().get(0).getName());
-
-	}
-	
-
 
 }
 
