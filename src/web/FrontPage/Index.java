@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
 import modeloFarmacia.Pharmacy;
@@ -19,6 +20,7 @@ public class Index extends WebPage {
 	public Index(){
 		super();
 		this.controller = new IndexController();
+		this.fillToday();
 		this.fillLinks();
 		this.fillPharmacyShifts();
 		this.fillSpecialEvent();
@@ -27,12 +29,26 @@ public class Index extends WebPage {
 	public Index(IndexController controller){
 		super();
 		this.controller = controller;
+		this.fillToday();
 		this.fillLinks();
 		this.fillPharmacyShifts();
 		this.fillSpecialEvent();
 	}
 	
 	
+
+	private void fillToday() {
+		Model<String> msjToday = Model.of("HOY");
+		Label label = new Label("today", msjToday){
+			private static final long serialVersionUID = 4963425868056123732L;
+
+			@Override
+			public boolean isVisible() {
+				return super.isVisible() && Index.this.controller.getIsToday();
+			}
+		};
+		this.add(label);
+	}
 
 	private void fillSpecialEvent() {
 		ListView<SpecialEvent> listSE = new ListView<SpecialEvent>("listSpecialEvent", new PropertyModel<>(this.controller, "specialEventsDate") ) { 
