@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.sql.rowset.spi.TransactionalWriter;
+
 import modeloFarmacia.PharmApp;
 import modeloFarmacia.Pharmacy;
 import modeloFarmacia.Sector;
@@ -20,6 +22,8 @@ public class PharmacyEditionController implements Serializable{
 	protected List<SocialWork> socialWorks;
 	protected Sector sector;
 	protected List<Sector> sectorList;
+	
+	private String error;
 	
 	protected List<CheckController> checked = new ArrayList<>();
 	
@@ -44,22 +48,39 @@ public class PharmacyEditionController implements Serializable{
 		public void accept() {
 			Pharmacy newPharmacy = this.buildPharmacy();
 			newPharmacy.setSocialWorks(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getSocialwork()).collect(Collectors.toList()));
-			PharmApp.store().addPharmacyToSector(newPharmacy,sector.getName());
-
+			
+			this.validate();
+			PharmApp.store().addPharmacyToSector(newPharmacy,sector.getName());	
+			
+			
+//			try {
+//				this.validate();
+//				PharmApp.store().addPharmacyToSector(newPharmacy,sector.getName());
+//			} catch (Exception e) {
+//				this.setError(e.getMessage());
+//			}
+		
 		}
 		
 		public Pharmacy buildPharmacy() {
 			return new Pharmacy(this.getName(), this.getAddress(), this.getLandphone(), this.getAlternativePhone());
-			
-			
-			
 		}
 		
 		public List<Sector> getSectorToShow() {
 			return PharmApp.store().getSectorList();
 		}
 		
-		
+		public void validate() {
+			if(this.getName() == null || 
+				this.getAddress() == null ||
+				this.getLandphone() == null ||
+				this.getAlternativePhone() == null ||
+				this.getSector() == null) {
+					throw new RuntimeException("Es obligatorio completar todos los campos.");
+			}
+			
+			
+		}
 		
 		// getters and setters
 		public String getName() {
@@ -113,6 +134,14 @@ public class PharmacyEditionController implements Serializable{
 
 		public void setSocialWorks(List<SocialWork> socialWorks) {
 			this.socialWorks = socialWorks;
+		}
+
+		public String getError() {
+			return error;
+		}
+
+		public void setError(String error) {
+			this.error = error;
 		}
 
 			

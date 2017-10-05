@@ -18,6 +18,8 @@ public class CycleController implements Serializable{
 	private String dateEndString;
 	private List<Pharmacy> pharmacyList = new ArrayList<>();
 	
+	private String error;
+	
 	
 	private List<CheckControllerPharmacy> checked = new ArrayList<>();
 	
@@ -39,28 +41,33 @@ public class CycleController implements Serializable{
 	}
 	
 	public void setCycleToBeUpdated(Cycle cycle) {
-//		this.setExceptions(cycle.getExceptions());
 		this.setDateEnd(cycle.getDateEnd());
 		this.setPharmacyList(cycle.getPharmacysInCycle());
 	}
 	
 	public void accept() {
-	Cycle newCycle = this.buildCycle();
-	newCycle.setPharmacysInCycle(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getPharmacy()).collect(Collectors.toList()));
+		Cycle newCycle = this.buildCycle();
+		newCycle.setPharmacysInCycle(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getPharmacy()).collect(Collectors.toList()));
+		sector.getCycles().add(newCycle);
 
-	sector.getCycles().add(newCycle);
-	
 	}
 	
 	
-	public Cycle buildCycle() {
-	
-	Cycle newCycle = new Cycle(getDateStart(), getDateEnd(),this.sector);
+	public boolean isEmpty() {
+		if (this.getDateEnd() == null) {
+			this.setError("Debe completar la FECHA de fin de CICLO.");
+			return true;
+		}
+		else {
+			return false;
+		}
 
-//	newCycle.setExceptions(null);
-	newCycle.setPharmacysInCycle(getPharmacyList());
-	return newCycle;
-	
+	}
+
+	public Cycle buildCycle() {
+		Cycle newCycle = new Cycle(getDateStart(), getDateEnd(),this.sector);
+		newCycle.setPharmacysInCycle(getPharmacyList());
+		return newCycle;
 }
 	
 	//getters and setters
@@ -102,6 +109,14 @@ public class CycleController implements Serializable{
 	public void setDateEndString(String dateEndString) {
 		this.dateEnd = LocalDate.parse(dateEndString);
 		this.dateEndString = dateEndString;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 	
 }

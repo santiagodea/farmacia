@@ -67,6 +67,8 @@ public class PharmacyEditionPanel extends Panel{
         };
          listView.setReuseItems(true);
          add(listView);
+         
+         this.add(new Label("error", controllerModel.bind("error")));
     }
 
 	private void fillOkCancelButtons() {
