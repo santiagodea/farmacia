@@ -11,9 +11,6 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
-import modeloFarmacia.Pharmacy;
-
-
 
 public class PanelException extends Panel {
 	private static final long serialVersionUID = -4187676151137847460L;
@@ -49,11 +46,8 @@ public class PanelException extends Panel {
 				modeloFarmacia.Exception actualException = panel.getModelObject();
 				CompoundPropertyModel<modeloFarmacia.Exception> comp = new CompoundPropertyModel<>(actualException);
 	
-				 IModel<String> mWhitOutException = Model.of( PanelException.this.controller.getActualSector()
-				.findCycleWhithDate(actualException.getDate())
-				.getPharmacyWithOutException(actualException.getDate()).getName());
+				 IModel<String> mWhitOutException = Model.of( PanelException.this.controller.getRemplacedPharmacyName(actualException.getDate()));
 		
-				//TODO ver que esto no sea asi
 				panel.add(new Label("remplaced", mWhitOutException));
 				panel.add(new Label("remplace", comp.bind("pharmacy.name")));
 				panel.add(new Label("date", comp.bind("date")));

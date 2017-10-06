@@ -46,7 +46,6 @@ public class ControllerMainAdmin extends Controller implements Serializable{
 					.findCycleWhithDate(getActualDateException())
 					.getPharmacysInCycle();
 		} catch (java.lang.Exception e) {
-//			this.setControllerErrorMsg(e.getMessage());
 			return new ArrayList<Pharmacy>();
 		}
 		
@@ -64,6 +63,12 @@ public class ControllerMainAdmin extends Controller implements Serializable{
 	
 	public boolean hasSectorSelected() {
 		return this.getActualSector() != null;
+	}
+	
+	public String getRemplacedPharmacyName(LocalDate date) {
+		return this.getActualSector()
+				.findCycleWhithDate(date)
+				.getPharmacyWithOutException(date).getName();
 	}
 	
 //Getters y Setters

@@ -12,16 +12,10 @@ import modeloFarmacia.PharmApp;
 import modeloFarmacia.Pharmacy;
 import modeloFarmacia.Sector;
 import modeloFarmacia.SocialWork;
-import web.LoadPharmacy.PharmacyEditionController;
 
 public class ModelTest {
 
-//	Sector norte = PharmApp.store().getSectorCall("norte");
 	Sector norte = new Sector("norte", LocalDate.of(2016, 12, 31));
-	
-//	//Ciclos - no usamos mas este tipo de creacion de ciclo se encarga Sector
-//	Cycle ciclo1NORTE = new Cycle(LocalDate.of(2017, 1, 1), LocalDate.of(2017, 6, 30));
-//	Cycle ciclo2NORTE = new Cycle(LocalDate.of(2017, 6, 30), LocalDate.of(2017, 12, 31));
 	
 	
 	//creo las farmacias
@@ -49,7 +43,6 @@ public class ModelTest {
 	@Test
 	public void testEqualsNamePharmacy() {
 
-//		fail("Not yet implemented");
 		Pharmacy farmacia3 = new Pharmacy("De Cicco", "Gues 399", 4522, 4523);
 		
 		assertTrue(farmacia1.equals(farmacia3));

@@ -44,7 +44,6 @@ public class Cycle implements Serializable {
 		  Optional<Exception> theException = this.findException(aException) ;
 
 		if(!theException.isPresent()){
-			aException.setCycle(this);
 			this.getExceptions().add(aException);
 		}
 		else {
