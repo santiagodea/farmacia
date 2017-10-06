@@ -13,7 +13,7 @@ import org.apache.wicket.model.PropertyModel;
 
 public class PanelException extends Panel {
 	private static final long serialVersionUID = -4187676151137847460L;
-	protected ControllerMainAdmin controller;
+	private ControllerMainAdmin controller;
 
 //Constructors
 	
@@ -22,11 +22,18 @@ public class PanelException extends Panel {
 		this.controller = controller;
 		this.fillExceptionDate();
 		this.fillListExceptions();
+		this.fillError();
 		this.add(new PanelSelectPharmacy("pharmacySelect", controller));
 	}
 
+
+
 //Methods
 	
+	private void fillError() {
+		this.add(new Label("error",new PropertyModel<>(this.controller, "controllerErrorMsg")));
+
+	}
 	
 	private void fillListExceptions() {
 		ListView<modeloFarmacia.Exception> listV = new ListView<modeloFarmacia.Exception>("exceptions", new PropertyModel<>(this.controller, "exceptions")) {

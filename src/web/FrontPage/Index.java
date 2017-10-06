@@ -93,18 +93,21 @@ public class Index extends WebPage {
 	private void fillPharmacyShifts() {
 		this.add(new Label("date", new PropertyModel<>(this.controller, "date")));
 
-		ListView<Pharmacy> list = new ListView<Pharmacy>("listFarDate", new PropertyModel<>(this.controller, "listPharmacy") ) { 
-			private static final long serialVersionUID = -6370070275502521027L;
 
-			@Override
-			protected void populateItem(ListItem<Pharmacy> panel) {
-				Pharmacy actualPhar = panel.getModelObject();
-				panel.add(new Label("pharmacy", new PropertyModel<>(actualPhar, "name")));
-				panel.add(new Label("address", new PropertyModel<>(actualPhar, "address")));
-			}
-		};
+			ListView<Pharmacy> list = new ListView<Pharmacy>("listFarDate", new PropertyModel<>(this.controller, "listPharmacy") ) { 
+				private static final long serialVersionUID = -6370070275502521027L;
+
+				@Override
+				protected void populateItem(ListItem<Pharmacy> panel) {
+					Pharmacy actualPhar = panel.getModelObject();
+					panel.add(new Label("pharmacy", new PropertyModel<>(actualPhar, "name")));
+					panel.add(new Label("address", new PropertyModel<>(actualPhar, "address")));
+				}
+			};
+			this.add(list);
+			this.add(new Label("error",new PropertyModel<>(this.controller, "controllerErrorMsg")));
+
+		}
 		
-		this.add(list);
 	}
 	
-}

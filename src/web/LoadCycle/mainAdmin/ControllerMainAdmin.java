@@ -11,7 +11,7 @@ import modeloFarmacia.PharmApp;
 import modeloFarmacia.Pharmacy;
 import modeloFarmacia.Sector;
 
-public class ControllerMainAdmin  implements Serializable{
+public class ControllerMainAdmin extends Controller implements Serializable{
 	private static final long serialVersionUID = 3583465022871249000L;
 	
 	private Sector actualSector;
@@ -92,8 +92,4 @@ public class ControllerMainAdmin  implements Serializable{
 		this.actualDateException = LocalDate.parse(dateExceptionString);
 		this.dateExceptionString = dateExceptionString;
 	}
-
-
-
-	
 }

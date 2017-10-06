@@ -2,17 +2,24 @@ package web.FrontPage;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import modeloFarmacia.PharmApp;
 import modeloFarmacia.Pharmacy;
 import modeloFarmacia.SpecialEvent;
+import web.LoadCycle.mainAdmin.Controller;
 
-public class IndexController implements Serializable {
+public class IndexController extends Controller implements Serializable {
 	private static final long serialVersionUID = -2981381443054915529L;
+	
+//Variables
+	
 	private PharmApp app = PharmApp.store();
 	private long offset = 0L;
+	
+//Methods
 	
 	public IndexController(){
 		PharmApp.store().setDate(LocalDate.of(2017, 3, 15)); //para test
@@ -23,9 +30,16 @@ public class IndexController implements Serializable {
 	}
 	
 	public List<Pharmacy> getListPharmacy(){
-		return this.app.getSectorList().stream()
-				.map(s -> s.getShiftPharmacy(this.getDate()))
-				.collect(Collectors.toList());
+		try {
+			this.controllerErrorMsg = "";
+			return this.app.getSectorList().stream()
+					.map(s -> s.getShiftPharmacy(this.getDate()))
+					.collect(Collectors.toList());
+		} catch (Exception e) {
+			this.controllerErrorMsg= e.getMessage();
+			return new ArrayList<Pharmacy>();
+		}
+		
 	}
 
 	public List<SpecialEvent> getSpecialEventsDate(){
@@ -42,4 +56,6 @@ public class IndexController implements Serializable {
 	public void plusDay() {
 		this.offset+=1;
 	}
+
+
 }
