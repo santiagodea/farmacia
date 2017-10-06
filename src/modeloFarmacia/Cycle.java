@@ -44,7 +44,11 @@ public class Cycle implements Serializable {
 		  Optional<Exception> theException = this.findException(aException) ;
 
 		if(!theException.isPresent()){
-			this.getExceptions().add(aException);
+			if (!this.getPharmacyWithOutException(aException.getDate()).equals(aException.getPharmacy())){
+				this.getExceptions().add(aException);
+			} else {
+				throw new RuntimeException("La farmacia Remplazada no puede ser igual a la remplazante");
+			}
 		}
 		else {
 			theException.get().setPharmacy(aException.getPharmacy());

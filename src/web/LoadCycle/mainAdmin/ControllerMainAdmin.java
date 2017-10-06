@@ -35,9 +35,13 @@ public class ControllerMainAdmin extends Controller implements Serializable{
 	
 	//Agrega la excepcion al modelo
 	public void saveException() {
-		this.getActualSector()
-				.findCycleWhithDate(getActualDateException())
-				.addException(new Exception(this.getActualDateException(), this.getActualPharmacyException()));
+		try {
+			this.getActualSector()
+			.findCycleWhithDate(getActualDateException())
+			.addException(new Exception(this.getActualDateException(), this.getActualPharmacyException()));
+		} catch (java.lang.Exception e) {
+			//TODO tendria que mostrar un label con el error
+		}
 	}
 	
 	public List<Pharmacy> getPharmacyCycleList(){
