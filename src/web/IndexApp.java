@@ -10,4 +10,11 @@ public class IndexApp extends WebApplication {
 		
 		return ProvisorioLinks.class;
 	}
+	
+    @Override
+    protected void init()
+    {
+        getRequestCycleSettings().setResponseRequestEncoding("UTF-8"); 
+        getMarkupSettings().setDefaultMarkupEncoding("UTF-8"); 
+    }
 }
