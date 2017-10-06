@@ -11,6 +11,7 @@ import org.apache.wicket.model.PropertyModel;
 
 import modeloFarmacia.Pharmacy;
 import modeloFarmacia.SpecialEvent;
+import web.SystemAdministrator.SysAdmin;
 
 public class Index extends WebPage {
 	private static final long serialVersionUID = 6806387568694518454L;
@@ -66,6 +67,17 @@ public class Index extends WebPage {
 	}
 
 	private void fillLinks() {
+		Link<String> adminLink = new Link<String>("admin") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(SysAdmin.class);
+			}
+		};
+
+		this.add(adminLink);
+		
 		Link<String> backLink = new Link<String>("backDate") {
 			private static final long serialVersionUID = 1L;
 

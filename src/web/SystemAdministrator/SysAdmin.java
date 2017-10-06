@@ -1,4 +1,4 @@
-package web;
+package web.SystemAdministrator;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
@@ -7,10 +7,10 @@ import web.FrontPage.Index;
 import web.LoadCycle.mainAdmin.MainAdmin;
 import web.LoadPharmacy.PagePharmacy;
 
-public class ProvisorioLinks extends WebPage{
+public class SysAdmin extends WebPage{
 	private static final long serialVersionUID = 851945421535409026L;
 
-	public ProvisorioLinks(){
+	public SysAdmin(){
 		
 		this.add(new Link<String>("index") {
 			private static final long serialVersionUID = -3690151360490159036L;
