@@ -45,10 +45,10 @@ public class CycleController extends Controller implements Serializable {
 	}
 
 	public void accept() {
+		this.validate();
 		Cycle newCycle = this.buildCycle();
 		newCycle.setPharmacysInCycle(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getPharmacy())
 				.collect(Collectors.toList()));
-		this.validate();
 		sector.getCycles().add(newCycle);
 
 	}
@@ -76,6 +76,7 @@ public class CycleController extends Controller implements Serializable {
 			this.setControllerErrorMsg(e.getMessage());
 		}
 		this.dateEndString = dateEndString;
+		this.setDateEnd(LocalDate.parse(dateEndString));
 	}
 
 	// GETTERS & SETTERS
