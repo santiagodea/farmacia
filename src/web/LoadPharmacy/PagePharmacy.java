@@ -11,8 +11,9 @@ import modeloFarmacia.Pharmacy;
 
 public class PagePharmacy extends WebPage {
 	private static final long serialVersionUID = -385733004769762315L;
-
+	//ATRIBUTO
 	private ControllerPharmacy controller;
+	//CONSTRUTOR
 	public PagePharmacy() {
 		super();
 		this.fillAddButton();
@@ -20,8 +21,7 @@ public class PagePharmacy extends WebPage {
 		this.fillPharmacy();
 		this.add(new PharmacyPanel("infoPharmacy", this.controller));
 	}
-	
-	
+	//METODOS
 	protected void fillAddButton() {
 		Link<String> addAction = new Link<String>("addPharmacy") {
 			private static final long serialVersionUID = -901862819067967823L;
@@ -29,16 +29,14 @@ public class PagePharmacy extends WebPage {
 			@Override
 			public void onClick() {
 				this.setResponsePage(AddPharmacyPage.class);
-				
+
 			}
-		}; 
+		};
 		this.add(addAction);
 	}
-	
-	
 
 	protected void fillPharmacy() {
-		this.add(new ListView<Pharmacy>("pharmacyList", new PropertyModel<>(this.controller,"pharmacyList")) {
+		this.add(new ListView<Pharmacy>("pharmacyList", new PropertyModel<>(this.controller, "pharmacyList")) {
 			private static final long serialVersionUID = -4547597546545617797L;
 
 			@Override
@@ -50,24 +48,24 @@ public class PagePharmacy extends WebPage {
 					@Override
 					public void onClick() {
 						PagePharmacy.this.controller.setChosenPharmacy(thePharmacy);
-						
+
 					}
-					
+
 				};
 				nameLink.setBody(new PropertyModel<>(thePharmacy, "name"));
 				panel.add(nameLink);
 				panel.add(new Label("address", new PropertyModel<>(thePharmacy, "address")));
-				panel.add(new Label("landphone", new PropertyModel<>(thePharmacy, "landphone")));			
+				panel.add(new Label("landphone", new PropertyModel<>(thePharmacy, "landphone")));
 			}
 		});
-		
+
 	}
-	
-	
-	//setter & getter
+
+	// SETTERS & GETTERS
 	public ControllerPharmacy getController() {
 		return controller;
 	}
+
 	public void setController(ControllerPharmacy controller) {
 		this.controller = controller;
 	}

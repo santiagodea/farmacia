@@ -8,8 +8,9 @@ import java.util.stream.Collectors;
 
 import modeloFarmacia.PharmApp;
 import modeloFarmacia.Pharmacy;
+import web.LoadCycle.mainAdmin.Controller;
 
-public class ControllerPharmacy implements Serializable{
+public class ControllerPharmacy extends Controller implements Serializable{
 	private static final long serialVersionUID = 7999909257917603937L;
 	
 	private Pharmacy pharmacy;
@@ -18,8 +19,7 @@ public class ControllerPharmacy implements Serializable{
 	//constructor
 	public ControllerPharmacy() {
 		this.pharmacy = null;
-		this.app = PharmApp.store();
-		
+		this.app = PharmApp.store();	
 	}
 	
 
@@ -60,10 +60,6 @@ public class ControllerPharmacy implements Serializable{
 		}
 		else {
 			return this.getPharmacy().getSocialWorks().stream().map(s -> s.getAddress()).collect(Collectors.toList());
-		}
-		
+		}	
 	}
-	
-	
-	
 }

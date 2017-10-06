@@ -14,10 +14,9 @@ import web.LoadCycle.mainAdmin.MainAdmin;
 
 public class CyclePanel extends Panel {
 	private static final long serialVersionUID = -2202245295610876601L;
-
+	//ATRIBUTOS
 	private CycleController controllerC;
-	
-	
+	//CONSTRUCTOR
 	public CyclePanel(String id, CycleController controller) {
 		super(id);
 		this.controllerC = controller;
@@ -26,49 +25,46 @@ public class CyclePanel extends Panel {
 		this.fillOkCancelButtons();
 
 	}
-
-	
-	
+	//METODOS
 	protected void fillPanel() {
 		CompoundPropertyModel<CycleController> controllerModel = new CompoundPropertyModel<>(this.controllerC);
-	
+
 		// fields
 		this.add(new Label("start", controllerModel.bind("dateStart")));
 		this.add(new TextField<>("end", controllerModel.bind("dateEndString")));
-		
+
 		@SuppressWarnings("unchecked")
-		ListView<CheckControllerPharmacy> listView = new ListView<CheckControllerPharmacy>("list", controllerC.getChecked()){
+		ListView<CheckControllerPharmacy> listView = new ListView<CheckControllerPharmacy>("list",
+				controllerC.getChecked()) {
 			private static final long serialVersionUID = 863206267657440733L;
 
-			protected void populateItem(ListItem<CheckControllerPharmacy> item){
+			protected void populateItem(ListItem<CheckControllerPharmacy> item) {
 				CheckControllerPharmacy controller = item.getModelObject();
-                item.add(new Label("name", controller.getName()));
-                item.add(new CheckBox("check", new PropertyModel(controller, "checked")));
-                //TODO el property no tiene el tipo
-            }
-        };	
-         listView.setReuseItems(true);
-         add(listView);
-         this.add(new Label("error", controllerModel.bind("error")));
-    }
-	
+				item.add(new Label("name", controller.getName()));
+				item.add(new CheckBox("check", new PropertyModel(controller, "checked")));
+				// TODO el property no tiene el tipo
+			}
+		};
+		listView.setReuseItems(true);
+		add(listView);
+		this.add(new Label("error", controllerModel.bind("ControllerErrorMsg")));
+	}
+
 	private void fillOkCancelButtons() {
 		Link<String> cancelAction = new Link<String>("cancelAction") {
 			private static final long serialVersionUID = 3251048626635072477L;
-	
+
 			@Override
 			public void onClick() {
 				this.setResponsePage(new MainAdmin());
-				
+
 			}
-		}; 
+		};
 		this.add(cancelAction);
 
 	}
 
-
-//getters and setters
-
+	// SETTERS & GETTERS
 	public CycleController getControllerC() {
 		return controllerC;
 	}

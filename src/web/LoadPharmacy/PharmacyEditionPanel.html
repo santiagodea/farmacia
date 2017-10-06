@@ -48,15 +48,18 @@
 
 			</div>
 			
-<!-- 			<div style="float: center"> -->
-<!-- 				<div class="col-sm-8"> -->
-					<label style= " color:#FF0000; font-weight: bold; float: center" ><FONT SIZE=10; wicket:id="error"></FONT></label>
-<!-- 				</div> -->
-<!-- 			</div> -->
+			<div style="float: center">
+				<div >
+					<label class="col-sm-8 alert" style= "font-size:1.5em; color:#FF0000; font-weight: bold; float: center" wicket:id="error"></label>
+				</div>
+			</div>
 			
 				<div class="btn-toolbar" role="group" style="float: right">
-					<button type="button" class="btn btn-standard" wicket:id="cancelAction">
+					<button type="button" class="btn btn-warning" wicket:id="cancelAction">
 						Cancelar
+					</button>
+					<button type="button" class="btn btn-warning" wicket:id="deleteAction">
+						Borrar
 					</button>
 					<input type="submit" class="btn btn-primary" value="Guardar FARMACIA">
 
