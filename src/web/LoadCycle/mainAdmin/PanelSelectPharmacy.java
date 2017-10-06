@@ -41,10 +41,7 @@ public class PanelSelectPharmacy extends Panel {
 												 new PropertyModel<>(this.getController(), "pharmacyCycleList"),
 												 new ChoiceRenderer<>("name"));
 		
-		
-		
 		formPharmacy.add(dropDown);
-		
 		this.add(formPharmacy);
 	}
 
@@ -59,7 +56,7 @@ public class PanelSelectPharmacy extends Panel {
 	
 	@Override
 	public boolean isVisible() {
-		return super.isVisible() && this.controller.hasDateExceptionSelect();
+		return super.isVisible() && this.controller.hasDateExceptionSelect() && !this.controller.errorPresent();
 	}
 
 }

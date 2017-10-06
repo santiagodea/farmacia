@@ -2,6 +2,8 @@ package web.LoadCycle.mainAdmin;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,9 +41,15 @@ public class ControllerMainAdmin extends Controller implements Serializable{
 	}
 	
 	public List<Pharmacy> getPharmacyCycleList(){
+		try {
 		return this.getActualSector()
-				.findCycleWhithDate(getActualDateException())
-				.getPharmacysInCycle();
+					.findCycleWhithDate(getActualDateException())
+					.getPharmacysInCycle();
+		} catch (java.lang.Exception e) {
+//			this.setControllerErrorMsg(e.getMessage());
+			return new ArrayList<Pharmacy>();
+		}
+		
 	}
 	
 	public List<Exception> getExceptions(){
@@ -77,6 +85,7 @@ public class ControllerMainAdmin extends Controller implements Serializable{
 	}
 
 	public LocalDate getActualDateException() {
+		this.actualDateException = LocalDate.parse(dateExceptionString);
 		return actualDateException;
 	}
 
@@ -89,7 +98,18 @@ public class ControllerMainAdmin extends Controller implements Serializable{
 	}
 
 	public void setDateExceptionString(String dateExceptionString) {
-		this.actualDateException = LocalDate.parse(dateExceptionString);
+		this.setControllerErrorMsg("");
+		try {
+			LocalDate ld = LocalDate.parse(dateExceptionString);
+			this.getActualSector().findCycleWhithDate(ld);
+		}
+		catch (DateTimeParseException e) {
+			this.setControllerErrorMsg("inserte una fecha valida formato: aaaa-mm-dd");
+		}
+		catch (java.lang.Exception e) {
+			this.setControllerErrorMsg(e.getMessage());
+		}
 		this.dateExceptionString = dateExceptionString;
 	}
+
 }

@@ -16,8 +16,6 @@ public class PharmApp implements Serializable {
 	
 	private List<SocialWork> socialWorks = new ArrayList<>();
 	
-	private LocalDate date; //para test FECHA ACTUAL falsa
-	
 //constructor	
 	private PharmApp() {
 		//Sectores
@@ -65,20 +63,20 @@ public class PharmApp implements Serializable {
 		//Creo los eventos especiales
 		this.addSpeciaEvent(new SpecialEvent(	"Chancho Movil",
 												"Chancho Movil - Club Belgrano",
-												LocalDate.of(2017,3,10),
-												LocalDate.of(2017,3,15),
+												LocalDate.of(2017,10,10),
+												LocalDate.of(2017,10,15),
 												"Estamos en la plaza todas las tardes, vendiendo el habitual chanchomovil, "));
 		
 		this.addSpeciaEvent(new SpecialEvent("CINE",
 										"Nueva Pelicula - IT",
-										LocalDate.of(2017,3,16),
-										LocalDate.of(2017,3, 23),
+										LocalDate.of(2017,10,16),
+										LocalDate.of(2017,10, 23),
 										"Se estara estrenando IT - el payaso asesino, toda esta semana en cartelera"));
 		
 		this.addSpeciaEvent(new SpecialEvent("Casa de campo",
 				"INFO - Jejenes",
-				LocalDate.of(2017,3,16),
-				LocalDate.of(2017,3, 30),
+				LocalDate.of(2017,10,16),
+				LocalDate.of(2017,10, 30),
 				"Casa de campo informa que hoy y hasta el dia 30 se estara fumigando contra los Jejenes."));
 
 		
@@ -147,10 +145,6 @@ public class PharmApp implements Serializable {
 	}
 	
 //getters y setters
-	public LocalDate getDate() {
-			//TODO ESTO DEBE SER LocalDate.now();
-			return date;
-	}
 
 
 	public List<Sector> getSectorList() {
@@ -165,10 +159,6 @@ public class PharmApp implements Serializable {
 			this.sectorList = sectorList;
 	}
 	
-//este no deberia existir solo para test
-	public void setDate(LocalDate date) {
-			this.date = date;
-	}
 
 	public List<SpecialEvent> getSpecialEventList() {
 		return SpecialEventList;

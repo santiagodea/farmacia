@@ -11,5 +11,7 @@ public abstract class Controller {
 		this.controllerErrorMsg = controllerErrorMsg;
 	}
 	
-	
+	public boolean errorPresent() {
+		return !this.controllerErrorMsg.equals("");
+	}
 }

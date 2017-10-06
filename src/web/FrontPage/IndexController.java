@@ -2,6 +2,7 @@ package web.FrontPage;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,30 +17,25 @@ public class IndexController extends Controller implements Serializable {
 	
 //Variables
 	
-	private PharmApp app = PharmApp.store();
 	private long offset = 0L;
 	
 //Methods
 	
-	public IndexController(){
-		PharmApp.store().setDate(LocalDate.of(2017, 3, 15)); //para test
-	}
-	
 	public LocalDate getDate(){
-		return this.app.getDate().plusDays(this.offset);
+		LocalDate nowDate = LocalDate.now();
+		return (LocalDateTime.now().getHour() < 8) ? nowDate.minusDays(1) : nowDate.plusDays(this.offset);
 	}
 	
 	public List<Pharmacy> getListPharmacy(){
 		try {
 			this.controllerErrorMsg = "";
-			return this.app.getSectorList().stream()
+			return PharmApp.store().getSectorList().stream()
 					.map(s -> s.getShiftPharmacy(this.getDate()))
 					.collect(Collectors.toList());
 		} catch (Exception e) {
 			this.controllerErrorMsg= e.getMessage();
 			return new ArrayList<Pharmacy>();
 		}
-		
 	}
 
 	public List<SpecialEvent> getSpecialEventsDate(){
@@ -56,6 +52,4 @@ public class IndexController extends Controller implements Serializable {
 	public void plusDay() {
 		this.offset+=1;
 	}
-
-
 }

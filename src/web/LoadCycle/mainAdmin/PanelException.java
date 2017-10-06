@@ -22,8 +22,8 @@ public class PanelException extends Panel {
 		this.controller = controller;
 		this.fillExceptionDate();
 		this.fillListExceptions();
-		this.fillError();
 		this.add(new PanelSelectPharmacy("pharmacySelect", controller));
+		this.fillError();
 	}
 
 
@@ -45,7 +45,7 @@ public class PanelException extends Panel {
 				modeloFarmacia.Exception actualException = panel.getModelObject();
 				CompoundPropertyModel<modeloFarmacia.Exception> comp = new CompoundPropertyModel<>(actualException);
 	
-				//TODO calculo de remplazada en el modelo
+				//TODO ver que esto no sea asi
 				panel.add(new Label("remplaced", comp.bind("pharmacyCalculatedReplaced.name")));
 				panel.add(new Label("remplace", comp.bind("pharmacy.name")));
 				panel.add(new Label("date", comp.bind("date")));
@@ -63,7 +63,7 @@ public class PanelException extends Panel {
 			
 			@Override
 			protected void onSubmit() {
-				this.setResponsePage(new MainAdmin(PanelException.this.controller));
+					this.setResponsePage(new MainAdmin(PanelException.this.controller));
 			}
 		};
 
