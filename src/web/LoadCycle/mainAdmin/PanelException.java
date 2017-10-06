@@ -7,7 +7,11 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+
+import modeloFarmacia.Pharmacy;
 
 
 
@@ -45,8 +49,12 @@ public class PanelException extends Panel {
 				modeloFarmacia.Exception actualException = panel.getModelObject();
 				CompoundPropertyModel<modeloFarmacia.Exception> comp = new CompoundPropertyModel<>(actualException);
 	
+				 IModel<String> mWhitOutException = Model.of( PanelException.this.controller.getActualSector()
+				.findCycleWhithDate(actualException.getDate())
+				.getPharmacyWithOutException(actualException.getDate()).getName());
+		
 				//TODO ver que esto no sea asi
-				panel.add(new Label("remplaced", comp.bind("pharmacyCalculatedReplaced.name")));
+				panel.add(new Label("remplaced", mWhitOutException));
 				panel.add(new Label("remplace", comp.bind("pharmacy.name")));
 				panel.add(new Label("date", comp.bind("date")));
 			}
