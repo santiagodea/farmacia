@@ -48,20 +48,16 @@ public class CycleController implements Serializable{
 	public void accept() {
 		Cycle newCycle = this.buildCycle();
 		newCycle.setPharmacysInCycle(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getPharmacy()).collect(Collectors.toList()));
+		this.validate();
 		sector.getCycles().add(newCycle);
 
 	}
 	
 	
-	public boolean isEmpty() {
+	public void validate() {
 		if (this.getDateEnd() == null) {
-			this.setError("Debe completar la FECHA de fin de CICLO.");
-			return true;
+			throw new RuntimeException("Debe completar el campo Fecha de Fin");
 		}
-		else {
-			return false;
-		}
-
 	}
 
 	public Cycle buildCycle() {
@@ -69,6 +65,11 @@ public class CycleController implements Serializable{
 		newCycle.setPharmacysInCycle(getPharmacyList());
 		return newCycle;
 }
+//	public void validateDate(String date) {
+//		if () {
+//			throw new RuntimeException("Debe completar el campo Fecha de Fin");
+//		}
+//	}
 	
 	//getters and setters
 	public LocalDate getDateStart() {
@@ -107,7 +108,8 @@ public class CycleController implements Serializable{
 	}
 
 	public void setDateEndString(String dateEndString) {
-		this.dateEnd = LocalDate.parse(dateEndString);
+		
+		this.dateEnd = LocalDate.parse(dateEndString);	
 		this.dateEndString = dateEndString;
 	}
 

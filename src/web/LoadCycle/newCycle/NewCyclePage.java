@@ -37,14 +37,14 @@ public class NewCyclePage extends WebPage {
 			@Override
 			protected void onSubmit() {
 	
-				if (!NewCyclePage.this.controller.isEmpty()) {
-						NewCyclePage.this.controller.accept();
-						this.setResponsePage(MainAdmin.class);
-				}
-				else {
+				try {
+					NewCyclePage.this.controller.accept();
+					this.setResponsePage(MainAdmin.class);
+				
+				} catch (Exception e) {
+					NewCyclePage.this.controller.setError(e.getMessage());
 					this.setResponsePage(getPage());
-					//controller.setError("el CICLO tiene algun campo vacio, por favor complete todos los campos");
-				}
+				} 
 			}
 	};
 		cycleMainDataForm.add(new CyclePanel("cycleFields", this.controller));
