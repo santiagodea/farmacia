@@ -39,7 +39,7 @@ public class Index extends WebPage {
 	
 
 	private void fillToday() {
-		Model<String> msjToday = Model.of("HOY");
+		Model<String> msjToday = Model.of("Ahora");
 		Label label = new Label("today", msjToday){
 			private static final long serialVersionUID = 4963425868056123732L;
 

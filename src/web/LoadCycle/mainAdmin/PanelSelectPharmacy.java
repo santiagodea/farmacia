@@ -29,7 +29,7 @@ public class PanelSelectPharmacy extends Panel {
 			@Override
 			protected void onSubmit() {
 				PanelSelectPharmacy.this.controller.saveException();
-				//TODO mejorar esto aca deberia mandar main admin con un conrtoller que posea el sector seleccionado
+				
 				ControllerMainAdmin newcontroller = new ControllerMainAdmin();
 				newcontroller.setActualSector(PanelSelectPharmacy.this.controller.getActualSector());
 				this.setResponsePage(new MainAdmin(newcontroller));
