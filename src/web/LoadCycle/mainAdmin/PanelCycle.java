@@ -16,7 +16,7 @@ public class PanelCycle extends Panel {
 
 	private ControllerMainAdmin controller;
 	
-//Controllers
+//Contructor
 	
 	public PanelCycle(String id, ControllerMainAdmin controller) {
 		super(id);
