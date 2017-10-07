@@ -19,8 +19,6 @@ public class Cycle implements Serializable {
 
 //constructor
 
-
-
 	public Cycle(LocalDate dateStart, LocalDate cycleEndDate, Sector sector2) {
 		this.setDateStart(dateStart);
 		this.setDateEnd(cycleEndDate);

@@ -125,6 +125,15 @@ body {
 }
 
 
+.btn {
+	margin: 1em;
+}
+.notification{
+	color: #EF3340;
+	size: 15px;
+}
+  
+
 /*
  * Affix and center
  */

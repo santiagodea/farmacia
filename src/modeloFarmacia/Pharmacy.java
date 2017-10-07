@@ -26,12 +26,8 @@ public class Pharmacy extends InfoStandard implements Serializable{
 		else {throw new RuntimeException("la farmacia ya tiene la obra social " +  socialWork);}
 	}	
 	
-	
-	
 	//getters & setters
 	public List<SocialWork> getSocialWorks() {return socialWorks;}
 	public void setSocialWorks(List<SocialWork> obrasSociales) {this.socialWorks = obrasSociales;}
-	
 
-	
 }
