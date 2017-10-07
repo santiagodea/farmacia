@@ -23,7 +23,7 @@ public class IndexController extends Controller implements Serializable {
 	
 	public LocalDate getDate(){
 		LocalDate nowDate = LocalDate.now();
-		return (LocalDateTime.now().getHour() < 8) ? nowDate.minusDays(1) : nowDate.plusDays(this.offset);
+		return ( this.getIsToday() && LocalDateTime.now().getHour() < 8) ? nowDate.minusDays(1) : nowDate.plusDays(this.offset);
 	}
 	
 	public List<Pharmacy> getListPharmacy(){

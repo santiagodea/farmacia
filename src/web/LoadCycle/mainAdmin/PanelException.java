@@ -16,7 +16,7 @@ public class PanelException extends Panel {
 	private static final long serialVersionUID = -4187676151137847460L;
 	private ControllerMainAdmin controller;
 
-//Constructors
+//Constructor
 	
 	public PanelException(String id, ControllerMainAdmin controller ) {
 		super(id);

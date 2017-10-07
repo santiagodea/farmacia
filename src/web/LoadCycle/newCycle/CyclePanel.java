@@ -33,7 +33,6 @@ public class CyclePanel extends Panel {
 		this.add(new Label("start", controllerModel.bind("dateStart")));
 		this.add(new TextField<>("end", controllerModel.bind("dateEndString")));
 
-		@SuppressWarnings("unchecked")
 		ListView<CheckControllerPharmacy> listView = new ListView<CheckControllerPharmacy>("list",
 				controllerC.getChecked()) {
 			private static final long serialVersionUID = 863206267657440733L;
@@ -41,8 +40,7 @@ public class CyclePanel extends Panel {
 			protected void populateItem(ListItem<CheckControllerPharmacy> item) {
 				CheckControllerPharmacy controller = item.getModelObject();
 				item.add(new Label("name", controller.getName()));
-				item.add(new CheckBox("check", new PropertyModel(controller, "checked")));
-				// TODO el property no tiene el tipo
+				item.add(new CheckBox("check", new PropertyModel<>(controller, "checked")));
 			}
 		};
 		listView.setReuseItems(true);
