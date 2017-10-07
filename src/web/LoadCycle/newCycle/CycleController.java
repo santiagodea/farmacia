@@ -70,13 +70,14 @@ public class CycleController extends Controller implements Serializable {
 		this.setControllerErrorMsg("");
 		try {
 			LocalDate ld = LocalDate.parse(dateEndString);
+			this.dateEndString = dateEndString;
+			this.setDateEnd(LocalDate.parse(dateEndString));
 		} catch (DateTimeParseException e) {
 			this.setControllerErrorMsg("Inserte una fecha valida formato: AAAA-MM-DD");
 		} catch (java.lang.Exception e) {
 			this.setControllerErrorMsg(e.getMessage());
 		}
-		this.dateEndString = dateEndString;
-		this.setDateEnd(LocalDate.parse(dateEndString));
+		
 	}
 
 	// GETTERS & SETTERS

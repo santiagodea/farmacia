@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 public class Sector implements Serializable {
@@ -42,6 +43,10 @@ public class Sector implements Serializable {
 		else {
 			 throw new RuntimeException("La farmacia " + pharmacy.getName() + " ya existe en el sector");
 		}
+	}
+	
+	public boolean canIaddPharmApp(Pharmacy pharmacy) {
+		return !PharmApp.store().getSectorList().stream().map(s -> s.getPharmacyList()).flatMap(l -> l.stream()).collect(Collectors.toList()).contains(pharmacy);
 	}
 
 	private boolean candIaddSector(Pharmacy pharmacy) {

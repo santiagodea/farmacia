@@ -36,7 +36,7 @@ public abstract class InfoStandard {
 	public boolean equals(Object obj) {
 		if(InfoStandard.class.isInstance(obj)){
 			InfoStandard temp = (InfoStandard) obj;
-			if(this.getName().equals(temp.getName())){
+			if(this.getName().toUpperCase().equals(temp.getName().toUpperCase())){
 				return true;
 			} else {
 				return false;
