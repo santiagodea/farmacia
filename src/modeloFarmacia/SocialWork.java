@@ -13,4 +13,5 @@ public class SocialWork extends InfoStandard implements Serializable{
 		super(name, address, landphone);
 	}
 
+
 }

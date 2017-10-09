@@ -5,6 +5,48 @@
 <title>Panel Obra Social</title>
 </head>
 <body>
-
+		<wicket:panel>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<span wicket:id="name"></span>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+				
+					<div class="row">
+									
+				  		<div class="col-sm-6" style="font-weight: bold">
+							Direccion
+						</div>
+						<div class="col-sm-6">
+							<div wicket:id="address"></div>
+						</div>
+					</div><!-- /.row -->
+					
+					<div class="row">
+				  		<div class="col-sm-6" style="font-weight: bold">
+							Telefono Fijo:
+						</div>
+						<div class="col-sm-4">
+							<div wicket:id="landphone"></div>
+						</div>
+					</div><!-- /.row -->
+					
+					<div class="row">
+				  		<div class="col-sm-4" style="font-weight: bold">
+							Farmacias:
+						</div>
+						<div class="col-sm-8">
+							<span wicket:id="list">
+      						<span wicket:id="name"></span>
+      					
+    			</span>
+						</div>
+					</div><!-- /.row -->	
+				</div>
+			</div>
+		</div>
+	</wicket:panel>
+	
 </body>
 </html>
