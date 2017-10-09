@@ -15,7 +15,7 @@ public class SocialWorkController implements Serializable {
 
 	private SocialWork socialWork;
 	private PharmApp app;
-	protected List<CheckController> checked = new ArrayList<>();
+	protected List<ControllerCheck> checked = new ArrayList<>();
 
 	
 	public SocialWorkController(){
