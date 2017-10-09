@@ -49,7 +49,7 @@ public class SocialWorkController implements Serializable {
 	public boolean hasChosenSocialWork(){ return this.socialWork != null;}
 	
 //	public List<SocialWork> getSocialWorkToShow(){
-//		return this.getApp().socialWorkList();
+//		return this.getApp().getSocialWorks();
 //	}
 	
 	public List<Pharmacy> pharmacyList(){

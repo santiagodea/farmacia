@@ -23,8 +23,9 @@ public class SocialWorkPanel extends Panel {
 		ListView<ControllerCheck> listView = new ListView<ControllerCheck>("list", controller.checked){
 			private static final long serialVersionUID = 863206267287450733L;
 
-			
-			protected void populatItem(ListItem<ControllerCheck> item){
+
+			@Override
+			protected void populateItem(ListItem<ControllerCheck> item) {
 				ControllerCheck controller = item.getModelObject();
 				item.add(new Label("name", controller.getName()));
 			}
@@ -32,6 +33,7 @@ public class SocialWorkPanel extends Panel {
 		listView.setReuseItems(true);
 		add(listView);
 	}
+
 
 	@Override
 	public boolean isVisible() {
