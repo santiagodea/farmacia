@@ -59,15 +59,16 @@ public class PharmacyEditionController extends Controller implements Serializabl
 	}
 
 	public void validate(Pharmacy newPharmacy2) {
-		if(this.getSector().canIaddPharmApp(newPharmacy2)) {	
-		}
 		
-		else {throw new RuntimeException("La farmacia " + newPharmacy2.getName() + " ya existe en la aplicacion	"); }
 		
 		if (this.getName() == null || this.getAddress() == null || this.getLandphone() == null
 				|| this.getAlternativePhone() == null || this.getSector() == null) {
 			throw new RuntimeException("Es obligatorio completar todos los campos.");
 		}
+		if(this.getSector().canIaddPharmApp(newPharmacy2)) {	
+		}
+		
+		else {throw new RuntimeException("La farmacia " + newPharmacy2.getName() + " ya existe en la aplicacion	"); }
 
 	}
 
