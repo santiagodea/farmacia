@@ -5,7 +5,7 @@ User Interface
 https://docs.google.com/document/d/1w0O3Q152NVI3sgsENd-g7LilzkSDNPtw9Vu5KCcPpxY/edit
 
 
-###Comentarios de Carlos
+### Comentarios de Carlos
 
 UI
 - [ ] OK que abren una nueva pestaña para cada acción, para la próxima prueben con botones "back"
@@ -24,10 +24,10 @@ UI
 - [ ] después de agregar un ciclo, sería mejor que volviera a mostrar el sector que estaba mostrando.
 
 
-####Código y diseño
+#### Código y diseño
 - [ ] el método getDate() en IndexController podría llamarse p.ej. getShiftDate()
 - [ ] en lugar de Exception, va ShiftException o algo, recuerden que "Exception" tiene un significado claro en el mundo Java.
-- [ ] cof cof es found, no finded (en Sector)
+- [x] cof cof es found, no finded (en Sector)
 - [ ] en addOrReplaceException de Cycle, está muy bien usado que findException() devuelve un Optional. 
   Pero OJO, si en su aplicación algunos find devuelven un Optional y otros el objeto, se pone confuso.
   Opción: distinguir por el nombre del método, p.ej. findExceptionAsOptional, para los casos que se desvíen del standard que se defina.
@@ -42,5 +42,5 @@ UI
 - [ ] CycleController: creo que conviene que el fillChecked lo lance el constructor del mismo CycleController, no desde afuera. Si no tiene los checked, el CycleController no funca.
 - [ ] el constructor sin parámetros de NewCyclePage no anda.
 
-Varios
-[ ] el juego de prueba debería incluir excepciones.
+######Varios
+- [ ] el juego de prueba debería incluir excepciones.

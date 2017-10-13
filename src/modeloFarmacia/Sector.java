@@ -55,8 +55,8 @@ public class Sector implements Serializable {
 	}
 
 	public Pharmacy getShiftPharmacy(LocalDate actualDate) {
-		Cycle findedCycle = this.findCycleWhithDate(actualDate);
-		return findedCycle.getShiftPharmacy(actualDate);
+		Cycle foundCycle = this.findCycleWhithDate(actualDate);
+		return foundCycle.getShiftPharmacy(actualDate);
 	}
 	
 	
