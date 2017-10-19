@@ -12,11 +12,6 @@ public class NewCyclePage extends WebPage {
 	protected ControllerMainAdmin controllerMain;
 	
 	//CONSTRUCTORES
-	public NewCyclePage() {
-		super();
-		this.controller = new CycleController(controllerMain.getActualSector());
-		this.fillForm();
-	}
 
 	public NewCyclePage(ControllerMainAdmin controllerM) {
 		super();

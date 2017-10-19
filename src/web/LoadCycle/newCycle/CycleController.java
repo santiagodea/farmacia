@@ -29,6 +29,7 @@ public class CycleController extends Controller implements Serializable {
 		this.setSector(aSector);
 		this.setPharmacyList(aSector.getPharmacyList());
 		this.setDateStart(getDateEndCycle());
+		this.fillChecked();
 	}
 
 	private LocalDate getDateEndCycle() {
@@ -47,7 +48,7 @@ public class CycleController extends Controller implements Serializable {
 	public void accept() {
 		this.validate();
 		Cycle newCycle = this.buildCycle();
-		newCycle.setPharmacysInCycle(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getPharmacy())
+		newCycle.setPharmacysInCycle(checked.stream().filter(c -> c.getChecked()).map(c -> c.getPharmacy())
 				.collect(Collectors.toList()));
 		sector.getCycles().add(newCycle);
 
