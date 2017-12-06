@@ -40,7 +40,7 @@ UI
   }
   conviene que agregue, no que cambie. 
   
-- [x ] CycleController: creo que conviene que el fillChecked lo lance el constructor del mismo CycleController, no desde afuera. Si no tiene los checked, el CycleController no funca.
+- [x] CycleController: creo que conviene que el fillChecked lo lance el constructor del mismo CycleController, no desde afuera. Si no tiene los checked, el CycleController no funca.
 - [x] el constructor sin parámetros de NewCyclePage no anda.
 
 ######Varios

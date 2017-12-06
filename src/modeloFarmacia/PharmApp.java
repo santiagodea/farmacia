@@ -180,5 +180,9 @@ public class PharmApp implements Serializable {
 		return this.getSpecialEventList().stream()
 				.filter(se -> se.includeDate(date2))
 				.collect(Collectors.toList());
+	}
+
+	public Pharmacy getPharmacyCall(String nombre) {
+		return this.pharmacyList().stream().filter(p -> p.getName().equals(nombre)).collect(Collectors.toList()).get(0);
 	}	
 }
