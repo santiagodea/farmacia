@@ -43,7 +43,7 @@ public class PharmacyEditionController extends Controller implements Serializabl
 
 	public void accept() {
 		Pharmacy newPharmacy = this.buildPharmacy();
-		newPharmacy.setSocialWorks(checked.stream().filter(c -> c.getChecked().equals(true)).map(c -> c.getSocialwork())
+		newPharmacy.setSocialWorks(checked.stream().filter(c -> c.getChecked()).map(c -> c.getSocialwork())
 				.collect(Collectors.toList()));
 		this.validate(newPharmacy);
 		

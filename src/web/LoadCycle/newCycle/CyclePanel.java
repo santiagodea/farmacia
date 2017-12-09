@@ -20,7 +20,6 @@ public class CyclePanel extends Panel {
 	public CyclePanel(String id, CycleController controller) {
 		super(id);
 		this.controllerC = controller;
-		this.controllerC.fillChecked();
 		this.fillPanel();
 		this.fillOkCancelButtons();
 
