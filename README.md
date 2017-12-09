@@ -5,6 +5,10 @@ User Interface
 https://docs.google.com/document/d/1w0O3Q152NVI3sgsENd-g7LilzkSDNPtw9Vu5KCcPpxY/edit
 
 
+- [ ] Cambiar las fechas que se muestran a sistema latinoamericano dd-mm-aaaa
+- [ ] Cuando muestro AHORA sacar la fecha actual, solo dejar el AHORA. (por problema con consulta entre las 12 y las 8.
+
+
 ### Comentarios de Carlos
 
 UI
@@ -42,5 +46,5 @@ UI
 - [ ] CycleController: creo que conviene que el fillChecked lo lance el constructor del mismo CycleController, no desde afuera. Si no tiene los checked, el CycleController no funca.
 - [ ] el constructor sin parámetros de NewCyclePage no anda.
 
-######Varios
+###### Varios
 - [ ] el juego de prueba debería incluir excepciones.
