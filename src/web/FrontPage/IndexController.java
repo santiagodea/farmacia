@@ -52,4 +52,7 @@ public class IndexController extends Controller implements Serializable {
 	public void plusDay() {
 		this.offset+=1;
 	}
+	public void setOffset(int n){
+		this.offset= n;
+	}
 }
