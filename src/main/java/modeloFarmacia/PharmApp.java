@@ -63,20 +63,20 @@ public class PharmApp implements Serializable {
 		//Creo los eventos especiales
 		this.addSpeciaEvent(new SpecialEvent(	"Chancho Movil",
 												"Chancho Movil - Club Belgrano",
-												LocalDate.of(2017,10,10),
-												LocalDate.of(2017,10,15),
+												LocalDate.of(2017,12,10),
+												LocalDate.of(2017,12,15),
 												"Estamos en la plaza todas las tardes, vendiendo el habitual chanchomovil, "));
 		
 		this.addSpeciaEvent(new SpecialEvent("CINE",
 										"Nueva Pelicula - IT",
-										LocalDate.of(2017,10,16),
-										LocalDate.of(2017,10, 23),
+										LocalDate.of(2017,12,16),
+										LocalDate.of(2017,12, 23),
 										"Se estara estrenando IT - el payaso asesino, toda esta semana en cartelera"));
 		
 		this.addSpeciaEvent(new SpecialEvent("Casa de campo",
 				"INFO - Jejenes",
-				LocalDate.of(2017,10,16),
-				LocalDate.of(2017,10, 30),
+				LocalDate.of(2017,12,16),
+				LocalDate.of(2017,12, 30),
 				"Casa de campo informa que hoy y hasta el dia 30 se estara fumigando contra los Jejenes."));
 
 		
