@@ -17,7 +17,7 @@ public class IndexApp extends WebApplication {
 		return Index.class;
 	}
 	/*
-	 * Paso 3: agregar el método init() en la clase que extiende WebApplication
+	 * Paso 3: agregar el metodo init() en la clase que extiende WebApplication
 	 * (que es la referenciada desde web.xml)
 	 * 
 	 */
@@ -31,7 +31,7 @@ public class IndexApp extends WebApplication {
 		// aca "/api" es la primer parte de la URL, va a ser todo
 		// ...:8080/api/...
 		// MonstersRestResource es la clase del paso 1
-		// el resto del código lo copié miserablemente
+		// el resto del codigo lo copia miserablemente
 		
         this.mountResource("/api", new ResourceReference("restReference") {
 			private static final long serialVersionUID = 2337438202065386511L;

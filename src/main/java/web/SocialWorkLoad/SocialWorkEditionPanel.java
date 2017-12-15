@@ -56,7 +56,7 @@ public class SocialWorkEditionPanel extends Panel{
 			this.add(new TextField<>("name", controllerModel.bind("name")));
 
 			this.add(new TextField<>("address", controllerModel.bind("address")));
-			this.add(new NumberTextField<>("landphone", controllerModel.bind("landphone")));
+			this.add(new NumberTextField<Integer>("landphone", controllerModel.bind("landphone")));
 
 
 			ListView<ControllerCheck> listView = new ListView<ControllerCheck>("list", controller.checked) {

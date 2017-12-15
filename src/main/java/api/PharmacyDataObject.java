@@ -7,7 +7,7 @@ public class PharmacyDataObject {
 	/*
 	 * Paso 2: armar el DataObject, la misma idea que lo que hicimos con los
 	 * DataProvider en Android. Creo que la herramienta mira los atributos, con lo
-	 * cual ni siquiera harían falta los getter.
+	 * cual ni siquiera haran falta los getter.
 	 */
 
 	private String name;
@@ -16,7 +16,7 @@ public class PharmacyDataObject {
 	private Integer alternativePhone;
 
 	// para comodidad, le puse un constructor que toma el "objeto inteligente"
-	// como parámetro y lo destripa
+	// como parimetro y lo destripa
 	public PharmacyDataObject(Pharmacy pharmacy) {
 		super();
 		this.name = pharmacy.getName();

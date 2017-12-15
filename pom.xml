@@ -36,6 +36,16 @@
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<appName>agile-falls-22343</appName>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
@@ -61,7 +71,13 @@
 			<artifactId>wicketstuff-restannotations-json</artifactId>
 			<version>6.10.0</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
-	
-	
+
+
 </project>
